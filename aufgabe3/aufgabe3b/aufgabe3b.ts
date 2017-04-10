@@ -39,33 +39,40 @@ document.addEventListener('DOMContentLoaded', function() {
         "Pik König",
         "Pik As"];
 
-    document.getElementById("nachziehstapel").addEventListener("click", karteZuHand);
+    document.getElementById("nachziehstapel").addEventListener("click", karteZurHand);
+    var handKarten: any = []; // der Array für die Handkarten bleibt vorerst leer
 
-    function karteZuHand(): void {
-        var handKarten: any = []; // Array für die Karten auf der Hand
-        var abgelegteKarten: any = [];// Array für die abgelegten Karten aus der Hand
-        if (handKarten < 5 && spielkarten.length > 0) { //Bedingung dass nur bis zu 5 Karten auf der Hand haben kann und die Spielkarten mehr als 0 sein müssen
-            var zahl: number = (Math.random() * 32) + 1; //eine Zahl zwischen 0 und 32
-            var karte: any = spielkarten[zahl]; //selektierte Spielkarte
-            handKarten.push(spielkarten[zahl]);//selektierte Spielkarte wird zu den Handkarten "gepusht"
-            spielkarten.splice(zahl, 1);//im Array der Spielkarten wird die selektierte Spielkarte entfernt
-            var div = document.createElement("div");//ein Div Element wird kreiert
-            document.getElementById("hand").appendChild(div);//das Element div hand kriegt ein Kind (div)
-            div.className = "handkarten";//bekommen einen Class Name, um sie in css zu verändern
-            div.textContent = handKarten[handKarten.length - 1];//zählt ab 32 runter auf dem nachziehstapel;
-            div.addEventListener("click", function() {
-                for (var i: number = 0; i < handKarten.length; i++) {//solange i kleiner als 5 (handKarten länge)
+    function karteZurHand(): void {
+        if ( handKarten < 6 && spielkarten.length > 0) { // es dürfen maximal 5 Karten auf der Hand sein und es muss noch mindestens eine Spielkarte im Array "spielkarten" vorhanden sein.
+            var zahl: number = (Math.random() * 31) + 0; // es wird eine Zahl zwischen 0 und 31 per Zufall ausgewählt 
+            var aktuelleKarte = spielkarten[zahl];                               
+            handKarten.push(aktuelleKarte); // die aktuelleKarte wird in den Array "handKarten" abgelegt
+            spielkarten.splice(zahl, 1); // die aktuelleKarte wird im Array "Spielkarten" entfernt
+            var div = document.createElement("div"); // ein Div Element wird kreiert, um darin zu zeigen, was die aktuelleKarte ist 
+            document.getElementById("hand").appendChild(div); // das Element div mit der ID "hand" kriegt ein Kind (div)
+            div.style.border = "5px solid black";
+            div.style.width = "7em";
+            div.style.height = "10em";
+            div.style.fontSize = "1.5em";       
+            div.className = "handkarten"; // das neuentstandene Div wird der Klasse "handkarten" zugewiesen
+            div.textContent = handKarten[handKarten.length - 1];
+            document.getElementById("nachziehstapel").textContent = "Nachziehkarten" + "\r\n" + "verbleibend: " + spielkarten.length.toString();
+            
+        }
+    div.addEventListener("click", karteZumAblagestapel);
+   
+    function karteZumAblagestapel(): void {
+        var ablagestapel: any = []; // der Array für die abgelegten Karten bleibt vorerst leer
+        for (var i = 0; i < handKarten.length; i++) { // nummeriert die Handkarten durch
                     if (this.textContent == handKarten[i]) {
-                        abgelegteKarten.push(handKarten[i]);//angeklickte Handkarte kommt zum Ablagestapel
-                        handKarten.splice(i, 1);// angeklickte Handkarte wird aus dem Array handKarten genommen
+                        ablagestapel.push(handKarten[i]); // fügt die Karte dem Ablagestapel Array hinzu
+                        handKarten.splice(i, 1); // entfernte die geklickte Karte aus dem Array
                         break;
                     }
-                    else { };
+                    else { }
                 }
-                this.parentNode.removeChild(this);// Kind wird entfernt
-            });
-            document.getElementById("nachziehstapel").textContent = "Karten: " + spielkarten.length.toString();         
-        }
-        else { };
+                this.parentNode.removeChild(this); // Entfernt das Div
+                document.getElementById("ablagestapel").textContent = "Ablagestapel" + "\r\n" + "Oberste Karte: " + "\r\n" + aktuelleKarte + "Karten: " + ablagestapel.length.toString();    
     }
+ }
 });

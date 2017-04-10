@@ -36,35 +36,38 @@ document.addEventListener('DOMContentLoaded', function () {
         "Pik Dame",
         "Pik K�nig",
         "Pik As"];
-    document.getElementById("nachziehstapel").addEventListener("click", karteZuHand);
-    function karteZuHand() {
-        var handKarten = []; // Array f�r die Karten auf der Hand
-        var abgelegteKarten = []; // Array f�r die abgelegten Karten aus der Hand
-        if (handKarten < 5 && spielkarten.length > 0) {
-            var zahl = (Math.random() * 32) + 1; //eine Zahl zwischen 0 und 32
-            var karte = spielkarten[zahl]; //selektierte Spielkarte
-            handKarten.push(spielkarten[zahl]); //selektierte Spielkarte wird zu den Handkarten "gepusht"
-            spielkarten.splice(zahl, 1); //im Array der Spielkarten wird die selektierte Spielkarte entfernt
-            var div = document.createElement("div"); //ein Div Element wird kreiert
-            document.getElementById("hand").appendChild(div); //das Element div hand kriegt ein Kind (div)
-            div.className = "handkarten"; //bekommen einen Class Name, um sie in css zu ver�ndern
-            div.textContent = handKarten[handKarten.length - 1]; //z�hlt ab 32 runter auf dem nachziehstapel;
-            div.addEventListener("click", function () {
-                for (var i = 0; i < handKarten.length; i++) {
-                    if (this.textContent == handKarten[i]) {
-                        abgelegteKarten.push(handKarten[i]); //angeklickte Handkarte kommt zum Ablagestapel
-                        handKarten.splice(i, 1); // angeklickte Handkarte wird aus dem Array handKarten genommen
-                        break;
-                    }
-                    else { }
-                    ;
-                }
-                this.parentNode.removeChild(this); // Kind wird entfernt
-            });
-            document.getElementById("nachziehstapel").textContent = "Karten: " + spielkarten.length.toString();
+    document.getElementById("nachziehstapel").addEventListener("click", karteZurHand);
+    var handKarten = []; // der Array f�r die Handkarten bleibt vorerst leer
+    function karteZurHand() {
+        if (handKarten < 6 && spielkarten.length > 0) {
+            var zahl = (Math.random() * 31) + 0; // es wird eine Zahl zwischen 0 und 31 per Zufall ausgew�hlt 
+            var aktuelleKarte = spielkarten[zahl];
+            handKarten.push(aktuelleKarte); // die aktuelleKarte wird in den Array "handKarten" abgelegt
+            spielkarten.splice(zahl, 1); // die aktuelleKarte wird im Array "Spielkarten" entfernt
+            var div = document.createElement("div"); // ein Div Element wird kreiert, um darin zu zeigen, was die aktuelleKarte ist 
+            document.getElementById("hand").appendChild(div); // das Element div mit der ID "hand" kriegt ein Kind (div)
+            div.style.border = "5px solid black";
+            div.style.width = "7em";
+            div.style.height = "10em";
+            div.style.fontSize = "1.5em";
+            div.className = "handkarten"; // das neuentstandene Div wird der Klasse "handkarten" zugewiesen
+            div.textContent = handKarten[handKarten.length - 1];
+            document.getElementById("nachziehstapel").textContent = "Nachziehkarten" + "\r\n" + "verbleibend: " + spielkarten.length.toString();
         }
-        else { }
-        ;
+        div.addEventListener("click", karteZumAblagestapel);
+        function karteZumAblagestapel() {
+            var ablagestapel = []; // der Array f�r die abgelegten Karten bleibt vorerst leer
+            for (var i = 0; i < handKarten.length; i++) {
+                if (this.textContent == handKarten[i]) {
+                    ablagestapel.push(handKarten[i]); // f�gt die Karte dem Ablagestapel Array hinzu
+                    handKarten.splice(i, 1); // entfernte die geklickte Karte aus dem Array
+                    break;
+                }
+                else { }
+            }
+            this.parentNode.removeChild(this); // Entfernt das Div
+            document.getElementById("ablagestapel").textContent = "Ablagestapel" + "\r\n" + "Oberste Karte: " + "\r\n" + aktuelleKarte + "Karten: " + ablagestapel.length.toString();
+        }
     }
 });
 //# sourceMappingURL=aufgabe3b.js.map
