@@ -11,3 +11,17 @@
 div {
 	text-align: center;
 }
+.selected{
+	background-color:green;
+}
+#summe {
+display: none;
+position:absolute;
+top:2em;
+left:5em;
+border: black solid 2px;
+z-index: 1;
+white-space: pre;
+background-color: green;
+color: white;
+}

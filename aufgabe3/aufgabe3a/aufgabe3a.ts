@@ -54,13 +54,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function zahlDerKoerner() {
         let feld = document.getElementsByClassName("felder");
-        let AnzahlKoerner: any;
+        let anzahlKoerner: any;
         for (let i = 0; i < feld.length; i++) {
-            AnzahlKoerner = Math.pow(2, i);
+            anzahlKoerner = Math.pow(2, i);
             if (i > 32) {
-                AnzahlKoerner = AnzahlKoerner.toExponential(6);
+                anzahlKoerner = anzahlKoerner.toExponential(6);
             }
-            feld[i].textContent = AnzahlKoerner.toString();
+            feld[i].textContent = anzahlKoerner.toString();
         }
     }
 
@@ -71,35 +71,28 @@ document.addEventListener('DOMContentLoaded', function() {
     let selected: HTMLDivElement;
 
     function Markierung(): void {
-        if (i < 7) { //wenn die ersten 8 Divs angeklickt werden
-            let divs: NodeListOf<HTMLDivElement> = document.getElementsByTagName("div");
-            for (let i: number = 0; i < divs.length; i++) {
-                divs[i].addEventListener("click", select);
-            }
+        let anzahlKoerner: number = 0;
+        let divs: NodeListOf<HTMLDivElement> = document.getElementsByTagName("div");
+        for (let i: number = 0; i < 9; i++) {
+            divs[i].addEventListener("click", function() {
+                this.classList.toggle("selected");
+                let selectedDivs = document.getElementsByClassName("selected");
+                if (selectedDivs.length == 0) {
+                    document.getElementById("summe").style.display = "none";
+                }
+                else {
+                    document.getElementById("summe").style.display = "block";
+                }
+                for (var i: number = 0; i < selectedDivs.length; i++) {
+                    anzahlKoerner = Number(selectedDivs[i].textContent);
+                    document.getElementById("summe").textContent = "Summe der Reiskoerner:" + "\r\n" + "Dezimal: " + anzahlKoerner.toString() + "\r\n" + "Hexadezimal: " + anzahlKoerner.toString(16);
+                }
+            });
         }
-
-        document.addEventListener("click", markierungAn);//das angeklickte Kästchen wird grün gefärbt
-        document.addEventListener("click", markierungAus);//das grüne Kästchen wird wieder weiß bzw schwarz
-
     }
-
-    function select(event: MouseEvent): void {
-        selected = <HTMLDivElement>event.target;
-    }
-
-    function markierungAn(event: MouseEvent): void {
-        let style: CSSStyleDeclaration = selected.style;
-        style.backgroundColor = "green";
-    }
-    function markierungAus(event: MouseEvent): void {
-        let style: CSSStyleDeclaration = selected.style;
-        style.display += "none";
-    }
-    //Anzahl der Körner anzeigen
-    document.addEventListener("mousemove", function(Event) {
+    });
+document.addEventListener("mousemove", function(Event) {
         document.getElementById("summe").style.left = (Event.clientX + 10) + "px";
         document.getElementById("summe").style.top = (Event.clientY + 10) + "px";
-        document.getElementById("summe").textContent = "Summe der selektierten Reiskörner:" + "\r\n" + "Dezimal: " + zahlDerKoerner.toString() + "\r\n" + "Hexadezimal: " + zahlDerKoerner.toString(16);
-    });
 });    
     

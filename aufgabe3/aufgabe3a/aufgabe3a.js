@@ -49,41 +49,41 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     function zahlDerKoerner() {
         let feld = document.getElementsByClassName("felder");
-        let AnzahlKoerner;
+        let anzahlKoerner;
         for (let i = 0; i < feld.length; i++) {
-            AnzahlKoerner = Math.pow(2, i);
+            anzahlKoerner = Math.pow(2, i);
             if (i > 32) {
-                AnzahlKoerner = AnzahlKoerner.toExponential(6);
+                anzahlKoerner = anzahlKoerner.toExponential(6);
             }
-            feld[i].textContent = AnzahlKoerner.toString();
+            feld[i].textContent = anzahlKoerner.toString();
         }
     }
+    //Beginn Aufgabe 3a
     Markierung();
     let selected;
     function Markierung() {
-        if (i < 7) {
-            let divs = document.getElementsByTagName("div");
-            for (let i = 0; i < divs.length; i++) {
-                divs[i].addEventListener("click", select);
-            }
+        let anzahlKoerner = 0;
+        let divs = document.getElementsByTagName("div");
+        for (let i = 0; i < 9; i++) {
+            divs[i].addEventListener("click", function () {
+                this.classList.toggle("selected");
+                let selectedDivs = document.getElementsByClassName("selected");
+                if (selectedDivs.length == 0) {
+                    document.getElementById("summe").style.display = "none";
+                }
+                else {
+                    document.getElementById("summe").style.display = "block";
+                }
+                for (var i = 0; i < selectedDivs.length; i++) {
+                    anzahlKoerner = Number(selectedDivs[i].textContent);
+                    document.getElementById("summe").textContent = "Summe der Reiskoerner:" + "\r\n" + "Dezimal: " + anzahlKoerner.toString() + "\r\n" + "Hexadezimal: " + anzahlKoerner.toString(16);
+                }
+            });
         }
-        document.addEventListener("click", markierungAn); //das angeklickte K�stchen wird gr�n gef�rbt
-        document.addEventListener("click", markierungAus); //das gr�ne K�stchen wird wieder wei� bzw schwarz
     }
-    function select(event) {
-        selected = event.target;
-    }
-    function markierungAn(event) {
-        let style = selected.style;
-        style.backgroundColor = "green";
-    }
-    function markierungAus(event) {
-        let style = selected.style;
-        style.display += "none";
-    }
-    document.addEventListener("mousemove", function (Event) {
-        document.getElementById("summe").style.left = (Event.clientX + 10) + "px";
-        document.getElementById("summe").style.top = (Event.clientY + 10) + "px";
-    });
+});
+document.addEventListener("mousemove", function (Event) {
+    document.getElementById("summe").style.left = (Event.clientX + 10) + "px";
+    document.getElementById("summe").style.top = (Event.clientY + 10) + "px";
 });
 //# sourceMappingURL=aufgabe3a.js.map
