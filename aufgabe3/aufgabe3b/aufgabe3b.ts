@@ -50,14 +50,14 @@ document.addEventListener('DOMContentLoaded', function() {
             spielkarten.splice(zahl, 1); // die aktuelleKarte wird im Array "Spielkarten" entfernt
             var div: HTMLDivElement = document.createElement("div"); // ein Div Element wird kreiert, um darin zu zeigen, was die aktuelleKarte ist 
             document.getElementById("hand").appendChild(div); // das Element div mit der ID "hand" kriegt ein Kind (div)
-            div.style.border = "5px solid black";
-            div.style.width = "7em";
-            div.style.height = "10em";
-            div.style.fontSize = "1.5em";       
+            div.style.border = "5px solid black"; // Style
+            div.style.width = "7em"; // Style
+            div.style.height = "10em"; // Style
+            div.style.fontSize = "1.5em"; // Style
             div.className = "handkarten"; // das neuentstandene Div wird der Klasse "handkarten" zugewiesen
             div.textContent = spielkarten[zahl];
-            document.getElementById("nachziehstapel").textContent = "Nachziehkarten" + "\r\n" + "verbleibend: " + spielkarten.length.toString();
-            div.addEventListener("click", karteZumAblagestapel);
+            document.getElementById("nachziehstapel").textContent = "Nachziehkarten" + "\r\n" + "verbleibend: " + spielkarten.length.toString(); // Kommentar im Nachziehstapel, wie viele Karten es noch gibt
+            div.addEventListener("click", karteZumAblagestapel); // Klick Event für die jeweilige Handkarten
         }
    
         function karteZumAblagestapel(_handKarten: any): void {
@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     break;
             }
             this.parentNode.removeChild(this); // Entfernt das Div
-            document.getElementById("ablagestapel").textContent = "Ablagestapel" + "\r\n" + "Oberste Karte:" + "\r\n" + div.textContent.toString();
+            document.getElementById("ablagestapel").textContent = "Ablagestapel" + "\r\n" + "Oberste Karte:" + "\r\n" + div.textContent.toString(); // Kommentar im Ablagestapel, welche Karte als letztes abgelegt wurde
         }
     }
 });
