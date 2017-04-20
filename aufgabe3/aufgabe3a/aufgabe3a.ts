@@ -39,9 +39,9 @@ document.addEventListener('DOMContentLoaded', function() {
     zahlDerKoerner();
 
     function placeDiv(_x: number, _y: number, _size: number, _color: string): void {
-        let div = document.createElement("div");
+        let div: any = document.createElement("div");
         document.body.appendChild(div);
-        let s = div.style;
+        let s: any = div.style;
         s.position = "absolute";
         div.className += _color;
         div.className += " felder";
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function zahlDerKoerner(): void {
-        let feld = document.getElementsByClassName("felder");
+        let feld: any = document.getElementsByClassName("felder");
         let anzahlKoerner: any;
         for (let i: number = 0; i < feld.length; i++) {
             anzahlKoerner = Math.pow(2, i);
@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let anzahlKoerner: number = 0;
         let divs: NodeListOf<HTMLDivElement> = document.getElementsByTagName("div");
         for (let i: number = 0; i < 9; i++) {
-            divs[i].addEventListener("click", function(): any {
+            divs[i].addEventListener("click", function(): void {
                 this.classList.toggle("selected");
                 let selectedDivs: any = document.getElementsByClassName("selected");
                 if (selectedDivs.length == 0) {
@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     });
-document.addEventListener("mousemove", function(Event): any {
+document.addEventListener("mousemove", function(Event): void {
         document.getElementById("summe").style.left = (Event.clientX + 10) + "px";
         document.getElementById("summe").style.top = (Event.clientY + 10) + "px";
 });    
