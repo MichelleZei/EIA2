@@ -5,7 +5,7 @@
     
 //Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function(): void {
     let n: number = 64;
     let size: number = 120;
     let i: number = 0;

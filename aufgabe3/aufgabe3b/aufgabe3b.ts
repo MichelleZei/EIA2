@@ -5,7 +5,7 @@
     
 //Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function(): void {
     var spielkarten: any = ["Karo 7",
         "Karo 8",
         "Karo 9",
