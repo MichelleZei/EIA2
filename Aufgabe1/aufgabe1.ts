@@ -4,7 +4,7 @@
 //Datum: 21.3.2017
     
 //Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function (): void {
     var n: number = 5;
     var c: string;
     var x: number = 0;
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 break;
         }
     }
-    function placeDiv(_color: string, _x: number, _y: number, _width: number, _height: number) {
+    function placeDiv(_color: string, _x: number, _y: number, _width: number, _height: number): void {
         var div: any = document.createElement("div");
         document.body.appendChild(div);
         var s: any = div.style;
