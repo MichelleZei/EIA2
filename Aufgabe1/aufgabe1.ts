@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var c: string;
     var x: number = 0;
     var y: number = 0;
-    for (var i = 0; i < n; i++) {
+    for (var i: number = 0; i < n; i++) {
         y += (i == 2) ? 20 : 50;
         x = (x + 170) % 400;
         switch (i) {
@@ -25,16 +25,16 @@ document.addEventListener('DOMContentLoaded', function () {
             default:
                 c = "#0000ff";
         }
-        for (var a = 50; a > 0; a -= 20) {
+        for (var a: number = 50; a > 0; a -= 20) {
             placeDiv(c, x, y, a, a);
             if (i == 4)
                 break;
         }
     }
-    function placeDiv(_color:string, _x:number, _y:number, _width:number, _height:number) {
-        var div = document.createElement("div");
+    function placeDiv(_color: string, _x: number, _y: number, _width: number, _height: number) {
+        var div: any = document.createElement("div");
         document.body.appendChild(div);
-        var s = div.style;
+        var s: any = div.style;
         s.borderStyle = "solid";
         s.borderColor = "#000000";
         s.borderWidth = "1px";

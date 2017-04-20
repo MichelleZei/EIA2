@@ -40,18 +40,18 @@ document.addEventListener('DOMContentLoaded', function () {
     var handKarten = []; // der Array f�r die Handkarten bleibt vorerst leer
     function karteZurHand() {
         if (handKarten.length < 5 && spielkarten.length > 0) {
-            var zahl = Math.floor((Math.random() * 31) + 0); // es wird eine Zahl zwischen 0 und 31 per Zufall ausgew�hlt 
+            var zahl = Math.floor((Math.random() * spielkarten.length)); // es wird eine Zahl zwischen 0 und 31 per Zufall ausgew�hlt             
             var aktuelleKarte = spielkarten[zahl];
             handKarten.push(aktuelleKarte); // die aktuelleKarte wird in den Array "handKarten" abgelegt
-            spielkarten.splice(zahl, 1); // die aktuelleKarte wird im Array "Spielkarten" entfernt
+            spielkarten.splice(zahl, 1); // die aktuelleKarte wird im Array "Spielkarten" entfernt                       
             var div = document.createElement("div"); // ein Div Element wird kreiert, um darin zu zeigen, was die aktuelleKarte ist 
-            document.getElementById("hand").appendChild(div); // das Element div mit der ID "hand" kriegt ein Kind (div)
+            document.getElementById("hand").appendChild(div); // das Element div mit der ID "hand" kriegt ein Kind (div)           
             div.style.border = "5px solid black"; // Style
             div.style.width = "7em"; // Style
             div.style.height = "10em"; // Style
             div.style.fontSize = "1.5em"; // Style
             div.className = "handkarten"; // das neuentstandene Div wird der Klasse "handkarten" zugewiesen
-            div.textContent = spielkarten[zahl];
+            div.textContent = aktuelleKarte; //spielkarten[zahl];
             document.getElementById("nachziehstapel").textContent = "Nachziehkarten" + "\r\n" + "verbleibend: " + spielkarten.length.toString(); // Kommentar im Nachziehstapel, wie viele Karten es noch gibt
             div.addEventListener("click", karteZumAblagestapel); // Klick Event f�r die jeweilige Handkarten
         }

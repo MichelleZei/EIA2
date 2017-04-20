@@ -44,18 +44,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function karteZurHand(): void {
         if ( handKarten.length < 5 && spielkarten.length > 0) { // es dürfen maximal 5 Karten auf der Hand sein und es muss noch mindestens eine Spielkarte im Array "spielkarten" vorhanden sein.
-            var zahl: number = Math.floor((Math.random() * 31) + 0); // es wird eine Zahl zwischen 0 und 31 per Zufall ausgewählt 
-            var aktuelleKarte: any = spielkarten[zahl];                               
+            var zahl: number = Math.floor((Math.random() * spielkarten.length)); // es wird eine Zahl zwischen 0 und 31 per Zufall ausgewählt             
+            var aktuelleKarte: string = spielkarten[zahl];
             handKarten.push(aktuelleKarte); // die aktuelleKarte wird in den Array "handKarten" abgelegt
-            spielkarten.splice(zahl, 1); // die aktuelleKarte wird im Array "Spielkarten" entfernt
+            spielkarten.splice(zahl, 1); // die aktuelleKarte wird im Array "Spielkarten" entfernt                       
             var div: HTMLDivElement = document.createElement("div"); // ein Div Element wird kreiert, um darin zu zeigen, was die aktuelleKarte ist 
-            document.getElementById("hand").appendChild(div); // das Element div mit der ID "hand" kriegt ein Kind (div)
+            document.getElementById("hand").appendChild(div); // das Element div mit der ID "hand" kriegt ein Kind (div)           
             div.style.border = "5px solid black"; // Style
             div.style.width = "7em"; // Style
             div.style.height = "10em"; // Style
             div.style.fontSize = "1.5em"; // Style
             div.className = "handkarten"; // das neuentstandene Div wird der Klasse "handkarten" zugewiesen
-            div.textContent = spielkarten[zahl];
+            div.textContent = aktuelleKarte; //spielkarten[zahl];
             document.getElementById("nachziehstapel").textContent = "Nachziehkarten" + "\r\n" + "verbleibend: " + spielkarten.length.toString(); // Kommentar im Nachziehstapel, wie viele Karten es noch gibt
             div.addEventListener("click", karteZumAblagestapel); // Klick Event für die jeweilige Handkarten
         }

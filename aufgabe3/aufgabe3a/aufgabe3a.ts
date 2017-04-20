@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     zahlDerKoerner();
 
-    function placeDiv(_x: number, _y: number, _size: number, _color: string) {
+    function placeDiv(_x: number, _y: number, _size: number, _color: string): void {
         let div = document.createElement("div");
         document.body.appendChild(div);
         let s = div.style;
@@ -52,10 +52,10 @@ document.addEventListener('DOMContentLoaded', function() {
         s.top = _y + "px";
     }
 
-    function zahlDerKoerner() {
+    function zahlDerKoerner(): void {
         let feld = document.getElementsByClassName("felder");
         let anzahlKoerner: any;
-        for (let i = 0; i < feld.length; i++) {
+        for (let i: number = 0; i < feld.length; i++) {
             anzahlKoerner = Math.pow(2, i);
             if (i > 32) {
                 anzahlKoerner = anzahlKoerner.toExponential(6);
@@ -74,9 +74,9 @@ document.addEventListener('DOMContentLoaded', function() {
         let anzahlKoerner: number = 0;
         let divs: NodeListOf<HTMLDivElement> = document.getElementsByTagName("div");
         for (let i: number = 0; i < 9; i++) {
-            divs[i].addEventListener("click", function() {
+            divs[i].addEventListener("click", function(): any {
                 this.classList.toggle("selected");
-                let selectedDivs = document.getElementsByClassName("selected");
+                let selectedDivs: any = document.getElementsByClassName("selected");
                 if (selectedDivs.length == 0) {
                     document.getElementById("summe").style.display = "none";
                 }
@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     });
-document.addEventListener("mousemove", function(Event) {
+document.addEventListener("mousemove", function(Event): any {
         document.getElementById("summe").style.left = (Event.clientX + 10) + "px";
         document.getElementById("summe").style.top = (Event.clientY + 10) + "px";
 });    
