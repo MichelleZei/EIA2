@@ -360,7 +360,7 @@ namespace L5_Biene {
         crc2.putImageData(imgData, 0, 0);
         
         for (let i: number = 0; i < n; i++) {
-            a[i] += Math.random() * 2 - 2;
+            a[i] += Math.random() * 3 - 2;
             c[i] += Math.random() * 6 - 3;
             if ( a[i] < 0) {
                 a[i] = 300;
