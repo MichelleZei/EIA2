@@ -63,7 +63,8 @@ namespace L5_Biene {
          window.setTimeout(animate, 20); 
         
         // Durch Klick auf den Canvas wird eine neue Biene hinzugefügt
-        canvas.addEventListener("click", fuegeEineBieneDazu);                        
+        canvas.addEventListener("click", fuegeEineBieneDazu); 
+        canvas.addEventListener("mousemove", fuegeEineBieneDazu);                       
     }
     
     function drawBackground(_x: number, _y: number, _fillColor: string): void {
@@ -359,13 +360,19 @@ namespace L5_Biene {
         crc2.putImageData(imgData, 0, 0);
         
         for (let i: number = 0; i < n; i++) {
-            a[i] += Math.random() * 3 - 2;
+            a[i] += Math.random() * 2 - 2;
             c[i] += Math.random() * 6 - 3;
             if ( a[i] < 0) {
                 a[i] = 300;
             }
+            if ( a[i] > 300) {
+                a[i] = 0;
+            }
             if ( c[i] < 0) {
                 c[i] = 300;    
+            }
+            if ( c[i] > 300) {
+                c[i] = 0;    
             }
             drawBiene(a[i], c[i], "#000000", "#FFEF00");
         }
