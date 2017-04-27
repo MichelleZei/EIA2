@@ -32,9 +32,9 @@ document.addEventListener('DOMContentLoaded', function (): void {
         }
     }
     function placeDiv(_color: string, _x: number, _y: number, _width: number, _height: number): void {
-        var div: any = document.createElement("div");
+        var div: HTMLDivElement = document.createElement("div");
         document.body.appendChild(div);
-        var s: any = div.style;
+        var s: CSSStyleDeclaration = div.style;
         s.borderStyle = "solid";
         s.borderColor = "#000000";
         s.borderWidth = "1px";

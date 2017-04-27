@@ -3,42 +3,15 @@
 //Matrikel: 254665
 //Datum: 6.4.2017
 //Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
-document.addEventListener('DOMContentLoaded', function () {
-    let spielkarten = ["Karo 7",
-        "Karo 8",
-        "Karo 9",
-        "Karo 10",
-        "Karo Bube",
-        "Karo Dame",
-        "Karo Koenig",
-        "Karo Ass",
-        "Kreuz 7",
-        "Kreuz 8",
-        "Kreuz 9",
-        "Kreuz 10",
-        "Kreuz Bube",
-        "Kreuz Dame",
-        "Kreuz Koenig",
-        "Kreuz As",
-        "Herz 7",
-        "Herz 8",
-        "Herz 9",
-        "Herz 10",
-        "Herz Bube",
-        "Herz Dame",
-        "Herz Koenig",
-        "Herz As",
-        "Pik 7",
-        "Pik 8",
-        "Pik 9",
-        "Pik 10",
-        "Pik Bube",
-        "Pik Dame",
-        "Pik Koenig",
-        "Pik As"];
-    document.getElementById("nachziehstapel").addEventListener("click", karteZurHand);
+var A3b;
+(function (A3b) {
+    document.addEventListener("DOMContentLoaded", init);
     let handKarten = []; // der Array f�r die Handkarten bleibt vorerst leer
-    function karteZurHand() {
+    let spielkarten = ["Karo 7", "Karo 8", "Karo 9", "Karo 10", "Karo Bube", "Karo Dame", "Karo Koenig", "Karo Ass", "Kreuz 7", "Kreuz 8", "Kreuz 9", "Kreuz 10", "Kreuz Bube", "Kreuz Dame", "Kreuz Koenig", "Kreuz As", "Herz 7", "Herz 8", "Herz 9", "Herz 10", "Herz Bube", "Herz Dame", "Herz Koenig", "Herz As", "Pik 7", "Pik 8", "Pik 9", "Pik 10", "Pik Bube", "Pik Dame", "Pik Koenig", "Pik As"];
+    function init(_event) {
+        document.getElementById("nachziehstapel").addEventListener("click", karteZurHand);
+    }
+    function karteZurHand(_event) {
         if (handKarten.length < 5 && spielkarten.length > 0) {
             let zahl = Math.floor((Math.random() * spielkarten.length)); // es wird eine Zahl zwischen 0 und 31 per Zufall ausgew�hlt             
             let aktuelleKarte = spielkarten[zahl];
@@ -53,18 +26,19 @@ document.addEventListener('DOMContentLoaded', function () {
             div.className = "handkarten"; // das neuentstandene Div wird der Klasse "handkarten" zugewiesen
             div.textContent = aktuelleKarte; //spielkarten[zahl];
             document.getElementById("nachziehstapel").textContent = "Nachziehkarten" + "\r\n" + "verbleibend: " + spielkarten.length.toString(); // Kommentar im Nachziehstapel, wie viele Karten es noch gibt
-            div.addEventListener("click", karteZumAblagestapel.bind(handKarten)); // Klick Event f�r die jeweilige Handkarten
-        }
-        function karteZumAblagestapel(_handKarten) {
-            let ablagestapel = []; // der Array f�r die abgelegten Karten bleibt vorerst leer
-            for (let i = 0; i < handKarten.length; i++) {
-                ablagestapel.push(handKarten[i]); // f�gt die Karte dem Ablagestapel Array hinzu
-                handKarten.splice(i, 1); // entfernte die geklickte Karte aus dem Array
-                break;
-            }
-            this.parentNode.removeChild(this); // Entfernt das Div
-            document.getElementById("ablagestapel").textContent = "Ablagestapel" + "\r\n" + "Oberste Karte:" + "\r\n" + div.textContent.toString(); // Kommentar im Ablagestapel, welche Karte als letztes abgelegt wurde
+            div.addEventListener("click", karteZumAblagestapel); // Klick Event f�r die jeweilige Handkarten
         }
     }
-});
+    function karteZumAblagestapel(_event) {
+        let div = _event.target;
+        let ablagestapel = []; // der Array f�r die abgelegten Karten bleibt vorerst leer
+        for (let i = 0; i < handKarten.length; i++) {
+            ablagestapel.push(handKarten[i]); // f�gt die Karte dem Ablagestapel Array hinzu
+            handKarten.splice(i, 1); // entfernte die geklickte Karte aus dem Array
+            break;
+        }
+        this.parentNode.removeChild(this); // Entfernt das Div
+        document.getElementById("ablagestapel").textContent = "Ablagestapel" + "\r\n" + "Oberste Karte:" + "\r\n" + div.textContent.toString(); // Kommentar im Ablagestapel, welche Karte als letztes abgelegt wurde
+    }
+})(A3b || (A3b = {}));
 //# sourceMappingURL=aufgabe3b.js.map

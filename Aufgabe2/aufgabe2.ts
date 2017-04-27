@@ -38,10 +38,10 @@ document.addEventListener('DOMContentLoaded', function(): void {
     }
     zahlDerKoerner();
 
-    function placeDiv(_x: number, _y: number, _size: number, _color: string): any {
-        let div: any = document.createElement("div");
+    function placeDiv(_x: number, _y: number, _size: number, _color: string): void {
+        let div: HTMLDivElement = document.createElement("div");
         document.body.appendChild(div);
-        let s: any = div.style;
+        let s: CSSStyleDeclaration = div.style;
         s.position = "absolute";
         div.className += _color;
         div.className += " felder";
@@ -53,14 +53,14 @@ document.addEventListener('DOMContentLoaded', function(): void {
     }
 
     function zahlDerKoerner(): any {
-        let feld: any = document.getElementsByClassName("felder");
-        let AnzahlKoerner: any;
+        let feld: HTMLDivElement = <HTMLDivElement>document.getElementsByClassName("felder")[i];
+        let anzahlKoerner: number;
         for (let i: number = 0; i < feld.length; i++) {
-            AnzahlKoerner = Math.pow(2, i);
+            anzahlKoerner = Math.pow(2, i);
             if (i > 32) {
-                AnzahlKoerner = AnzahlKoerner.toExponential(6);
+                anzahlKoerner = anzahlKoerner.toExponential(6);
             }
-            feld[i].textContent = AnzahlKoerner.toString();
+            feld[i].textContent = anzahlKoerner.toString();
         }
     }
 });
