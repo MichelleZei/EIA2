@@ -48,12 +48,15 @@ document.addEventListener('DOMContentLoaded', function () {
         s.top = _y + "px";
     }
     function zahlDerKoerner() {
+        var alphas;
         let feld = document.getElementsByClassName("felder");
+        console.log(feld);
         let anzahlKoerner;
         for (let i = 0; i < feld.length; i++) {
             anzahlKoerner = Math.pow(2, i);
             if (i > 32) {
-                anzahlKoerner = anzahlKoerner.toExponential(6);
+                var anzahlKoernerAsString = String(anzahlKoerner);
+                anzahlKoernerAsString = anzahlKoerner.toExponential(6);
             }
             feld[i].textContent = anzahlKoerner.toString();
         }
@@ -65,25 +68,29 @@ document.addEventListener('DOMContentLoaded', function () {
         let anzahlKoerner = 0;
         let divs = document.getElementsByTagName("div");
         for (let i = 0; i < 9; i++) {
-            divs[i].addEventListener("click", function () {
-                this.classList.toggle("selected");
-                let selectedDivs = document.getElementsByClassName("selected");
-                if (selectedDivs.length == 0) {
-                    document.getElementById("summe").style.display = "none";
-                }
-                else {
-                    document.getElementById("summe").style.display = "block";
-                }
-                for (var i = 0; i < selectedDivs.length; i++) {
-                    anzahlKoerner = Number(selectedDivs[i].textContent);
-                    document.getElementById("summe").textContent = "Summe der Reiskoerner:" + "\r\n" + "Dezimal: " + anzahlKoerner.toString() + "\r\n" + "Hexadezimal: " + anzahlKoerner.toString(16);
-                }
-            });
+            divs[i].addEventListener("click", summeAnzeigen.bind(anzahlKoerner));
         }
     }
-});
-document.addEventListener("mousemove", function (Event) {
-    document.getElementById("summe").style.left = (Event.clientX + 10) + "px";
-    document.getElementById("summe").style.top = (Event.clientY + 10) + "px";
+    function summeAnzeigen(_event, _anzahlKoerner) {
+        let div = _event.target;
+        console.log(div);
+        div.classList.toggle("selected");
+        let selectedDivs = document.getElementsByClassName("selected");
+        if (selectedDivs.length == 0) {
+            document.getElementById("summe").style.display = "none";
+        }
+        else {
+            document.getElementById("summe").style.display = "block";
+        }
+        for (var i = 0; i < selectedDivs.length; i++) {
+            _anzahlKoerner = Number(selectedDivs[i].textContent);
+            document.getElementById("summe").textContent = "Summe der Reiskoerner:" + "\r\n" + "Dezimal: " + _anzahlKoerner.toString() + "\r\n" + "Hexadezimal: " + _anzahlKoerner.toString(16);
+        }
+    }
+    document.addEventListener("mousemove", getSumme);
+    function getSumme(_event) {
+        document.getElementById("summe").style.left = (_event.clientX + 10) + "px";
+        document.getElementById("summe").style.top = (_event.clientY + 10) + "px";
+    }
 });
 //# sourceMappingURL=aufgabe3a.js.map

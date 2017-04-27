@@ -39,9 +39,9 @@ document.addEventListener('DOMContentLoaded', function(): void {
     zahlDerKoerner();
 
     function placeDiv(_x: number, _y: number, _size: number, _color: string): void {
-        let div: any = document.createElement("div");
+        let div: HTMLDivElement = document.createElement("div");
         document.body.appendChild(div);
-        let s: any = div.style;
+        let s: CSSStyleDeclaration = div.style;
         s.position = "absolute";
         div.className += _color;
         div.className += " felder";
@@ -53,12 +53,15 @@ document.addEventListener('DOMContentLoaded', function(): void {
     }
 
     function zahlDerKoerner(): void {
-        let feld: any = document.getElementsByClassName("felder");
-        let anzahlKoerner: any;
+        var alphas:string[]; 
+        let feld: NodeListOf<Element> = document.getElementsByClassName("felder");
+        console.log(feld);
+        let anzahlKoerner: number;
         for (let i: number = 0; i < feld.length; i++) {
             anzahlKoerner = Math.pow(2, i);
             if (i > 32) {
-                anzahlKoerner = anzahlKoerner.toExponential(6);
+                var anzahlKoernerAsString: string = String(anzahlKoerner);
+                anzahlKoernerAsString = anzahlKoerner.toExponential(6);
             }
             feld[i].textContent = anzahlKoerner.toString();
         }
@@ -74,25 +77,30 @@ document.addEventListener('DOMContentLoaded', function(): void {
         let anzahlKoerner: number = 0;
         let divs: NodeListOf<HTMLDivElement> = document.getElementsByTagName("div");
         for (let i: number = 0; i < 9; i++) {
-            divs[i].addEventListener("click", function(): void {
-                this.classList.toggle("selected");
-                let selectedDivs: any = document.getElementsByClassName("selected");
-                if (selectedDivs.length == 0) {
-                    document.getElementById("summe").style.display = "none";
-                }
-                else {
-                    document.getElementById("summe").style.display = "block";
-                }
-                for (var i: number = 0; i < selectedDivs.length; i++) {
-                    anzahlKoerner = Number(selectedDivs[i].textContent);
-                    document.getElementById("summe").textContent = "Summe der Reiskoerner:" + "\r\n" + "Dezimal: " + anzahlKoerner.toString() + "\r\n" + "Hexadezimal: " + anzahlKoerner.toString(16);
-                }
-            });
+            divs[i].addEventListener("click", summeAnzeigen.bind(anzahlKoerner));  
         }
     }
-    });
-document.addEventListener("mousemove", function(Event): void {
-        document.getElementById("summe").style.left = (Event.clientX + 10) + "px";
-        document.getElementById("summe").style.top = (Event.clientY + 10) + "px";
-});    
     
+    function summeAnzeigen(_event: Event, _anzahlKoerner: number): void {
+        let div: HTMLDivElement = <HTMLDivElement>_event.target;
+        console.log(div);
+        div.classList.toggle("selected");
+        let selectedDivs: NodeListOf<Element> = document.getElementsByClassName("selected");
+        if (selectedDivs.length == 0) {
+            document.getElementById("summe").style.display = "none";
+        }
+        else {
+            document.getElementById("summe").style.display = "block";
+        }
+        for (var i: number = 0; i < selectedDivs.length; i++) {
+            _anzahlKoerner = Number(selectedDivs[i].textContent);
+            document.getElementById("summe").textContent = "Summe der Reiskoerner:" + "\r\n" + "Dezimal: " + _anzahlKoerner.toString() + "\r\n" + "Hexadezimal: " + _anzahlKoerner.toString(16);
+        }
+    }
+    document.addEventListener("mousemove", getSumme);
+
+    function getSumme(_event: MouseEvent): void {
+        document.getElementById("summe").style.left = (_event.clientX + 10) + "px";
+        document.getElementById("summe").style.top = (_event.clientY + 10) + "px";
+    }
+});  
