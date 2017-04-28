@@ -60,11 +60,11 @@ namespace L5_Biene {
             a[i] = 25;
             c[i] = 210;
         }    
-         window.setTimeout(animate, 20); 
+        window.setTimeout(animate, 20); 
         
         // Durch Klick auf den Canvas wird eine neue Biene hinzugefügt
         canvas.addEventListener("click", fuegeEineBieneDazu); 
-        canvas.addEventListener("mousemove", fuegeEineBieneDazu);                       
+        canvas.addEventListener("touch", fuegeEineBieneDazu);                       
     }
     
     function drawBackground(_x: number, _y: number, _fillColor: string): void {
@@ -76,6 +76,7 @@ namespace L5_Biene {
         crc2.closePath();
         crc2.stroke();
     }
+    
     function drawSun(_x: number, _y: number, _fillColor: string): void {
         crc2.beginPath();
         crc2.fillStyle = _fillColor;
@@ -83,6 +84,7 @@ namespace L5_Biene {
         crc2.closePath();
         crc2.fill();
     }
+    
     function drawWiese(_x: number, _y: number, _fillColor: string): void {
         crc2.beginPath();
         crc2.fillStyle = _fillColor;
@@ -92,7 +94,9 @@ namespace L5_Biene {
         crc2.closePath();
         crc2.stroke();
     }
+    
     function drawFlower1(_x: number, _y: number, _fillColor: string): void {
+        
         // Stängel
         crc2.beginPath();
         crc2.strokeStyle = _fillColor;
@@ -102,6 +106,7 @@ namespace L5_Biene {
         crc2.closePath();
         crc2.stroke();
         crc2.fill();
+        
         // Blüte
         crc2.beginPath();
         crc2.strokeStyle = "white";
@@ -124,6 +129,7 @@ namespace L5_Biene {
         crc2.closePath();
         crc2.stroke();
         crc2.fill();
+        
         // Kreis in der Mitte
         crc2.beginPath();
         crc2.fillStyle = "#FF8C00";
@@ -131,7 +137,9 @@ namespace L5_Biene {
         crc2.closePath();
         crc2.fill();
     }
+    
     function drawFlower2(_x: number, _y: number, _fillColor: string): void {
+        
         // Stängel
         crc2.beginPath();
         crc2.strokeStyle = _fillColor;
@@ -148,6 +156,7 @@ namespace L5_Biene {
         crc2.closePath();
         crc2.stroke();
         crc2.fill();
+        
         // Blüte
         crc2.beginPath();
         crc2.fillStyle = "red";
@@ -171,6 +180,7 @@ namespace L5_Biene {
         crc2.arc(_x - 6, _y + 6, 7, 0, 2 * Math.PI);
         crc2.closePath();
         crc2.fill();
+        
         // Kreis in der Mitte
         crc2.beginPath();
         crc2.fillStyle = "#7C0000";
@@ -178,7 +188,9 @@ namespace L5_Biene {
         crc2.closePath();
         crc2.fill();
     }
+    
     function drawFlower3(_x: number, _y: number, _fillColor: string): void {
+        
         // Stängel
         crc2.beginPath();
         crc2.strokeStyle = _fillColor;
@@ -188,6 +200,7 @@ namespace L5_Biene {
         crc2.closePath();
         crc2.stroke();
         crc2.fill();
+        
         // Blüte
         crc2.beginPath();
         crc2.strokeStyle = "#7C0071";
@@ -207,6 +220,7 @@ namespace L5_Biene {
         crc2.stroke();
         crc2.fill();
     }
+    
     function drawMountain1(_x: number, _y: number, _strokeColor: string, _fillColor: string): void {
         crc2.beginPath();
         crc2.fillStyle = _fillColor;
@@ -252,18 +266,21 @@ namespace L5_Biene {
         crc2.stroke();
     }
     function drawBienenkorb(_x: number, _y: number, _fillColor: string, _strokeColor: string): void {
+        
         //oberer Teil
         crc2.beginPath();
         crc2.fillStyle = _fillColor;
         crc2.arc(_x, _y, 25, 0, Math.PI, true);
         crc2.closePath();
         crc2.fill();
+        
         //unterer Teil
         crc2.beginPath();
         crc2.fillStyle = _fillColor;
         crc2.fillRect(_x - 25, _y, 50, 30);
         crc2.closePath();
         crc2.fill();
+        
         //Bienenkorb Öffnung
         crc2.beginPath();
         crc2.strokeStyle = "#201500";
@@ -274,6 +291,7 @@ namespace L5_Biene {
         crc2.fill();
     }
     function drawBiene(_x: number, _y: number, _fillColor: string, _strokeColor: string): void {
+        
         //Flügel
         crc2.beginPath();
         crc2.fillStyle = "#B9FFFF";
@@ -285,6 +303,7 @@ namespace L5_Biene {
         crc2.arc(_x + 9, _y + 3, 5, 0, 2 * Math.PI);
         crc2.closePath();
         crc2.fill();
+        
         //Stachel
         crc2.beginPath();
         crc2.fillStyle = _fillColor;
@@ -295,6 +314,7 @@ namespace L5_Biene {
         crc2.closePath();
         crc2.fill();
         crc2.stroke();
+        
         //Körper
         //gelb
         crc2.beginPath();
@@ -335,12 +355,14 @@ namespace L5_Biene {
         crc2.lineTo(_x + 8, _y - 1);
         crc2.closePath();
         crc2.stroke();
+        
         //Kopf
         crc2.beginPath();
         crc2.fillStyle = "#000000";
         crc2.arc(_x + 10, _y - 6, 3, 0, 2 * Math.PI);
         crc2.closePath();
         crc2.fill();
+        
         //Fühler
         crc2.beginPath();
         crc2.strokeStyle = "#000000";
@@ -355,10 +377,10 @@ namespace L5_Biene {
         crc2.closePath();
         crc2.stroke();
     } 
+    
     // Animation der Bienen
     function animate(): void {
         crc2.putImageData(imgData, 0, 0);
-        
         for (let i: number = 0; i < n; i++) {
             a[i] += Math.random() * 3 - 2;
             c[i] += Math.random() * 6 - 3;
@@ -378,6 +400,7 @@ namespace L5_Biene {
         }
         window.setTimeout(animate, 20);
     }        
+    
     // hinzufügen der Bienen 
     function fuegeEineBieneDazu(): void {
         a.push(25);

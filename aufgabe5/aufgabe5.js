@@ -56,7 +56,7 @@ var L5_Biene;
         window.setTimeout(animate, 20);
         // Durch Klick auf den Canvas wird eine neue Biene hinzugef�gt
         canvas.addEventListener("click", fuegeEineBieneDazu);
-        canvas.addEventListener("mousemove", fuegeEineBieneDazu);
+        canvas.addEventListener("touch", fuegeEineBieneDazu);
     }
     function drawBackground(_x, _y, _fillColor) {
         crc2.beginPath();
