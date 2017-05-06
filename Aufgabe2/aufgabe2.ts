@@ -5,7 +5,7 @@
     
 //Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
 
-document.addEventListener('DOMContentLoaded', function(): void {
+document.addEventListener("DOMContentLoaded", function(): void {
     let n: number = 64;
     let size: number = 120;
     let i: number = 0;
@@ -52,15 +52,18 @@ document.addEventListener('DOMContentLoaded', function(): void {
         s.top = _y + "px";
     }
 
-    function zahlDerKoerner(): any {
-        let feld: HTMLDivElement = <HTMLDivElement>document.getElementsByClassName("felder")[i];
-        let anzahlKoerner: number;
-        for (let i: number = 0; i < feld.length; i++) {
-            anzahlKoerner = Math.pow(2, i);
-            if (i > 32) {
-                anzahlKoerner = anzahlKoerner.toExponential(6);
+    function zahlDerKoerner(): void {
+            var alphas: string[];
+            let feld: NodeListOf<Element> = document.getElementsByClassName("felder");
+            console.log(feld);
+            let anzahlKoerner: number;
+            for (let i: number = 0; i < feld.length; i++) {
+                anzahlKoerner = Math.pow(2, i);
+                if (i > 32) {
+                    var anzahlKoernerAsString: string = String(anzahlKoerner);
+                    anzahlKoernerAsString = anzahlKoerner.toExponential(6);
+                }
+                feld[i].textContent = anzahlKoerner.toString();
             }
-            feld[i].textContent = anzahlKoerner.toString();
-        }
     }
 });

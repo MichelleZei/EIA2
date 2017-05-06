@@ -7,8 +7,8 @@
 namespace L5_Biene {
     window.addEventListener("load", init);
     let crc2: CanvasRenderingContext2D;
-    let a: number[] = [];
-    let c: number[] = [];
+    let x: number[] = [];
+    let y: number[] = [];
     let n: number = 10;
     let imgData: ImageData; 
     
@@ -16,7 +16,6 @@ namespace L5_Biene {
         let canvas: HTMLCanvasElement;
         canvas = document.getElementsByTagName("canvas")[0];
         crc2 = canvas.getContext("2d");
-        
         // Funktionen aufrufen, die gemalt werden sollen
         drawBackground(0, 0, "#98F5FF");
         drawSun(250, 30, "#ffff00");
@@ -31,11 +30,11 @@ namespace L5_Biene {
         drawBienenkorb(20, 190, "#E8AE00", "261C0E");
         
         // Zufallsblumen
-        for (var i: number = 0; i < 30; i++) {
-            var zufallszahlBlumen: number = ((Math.random() * 4) + 0);
-            var b: number = Math.floor(zufallszahlBlumen);
-            var x: number = (Math.random() * (canvas.width - 110) + 110);
-            var y: number = (Math.random() * (canvas.height - 170) + 150);
+        for (let i: number = 0; i < 30; i++) {
+            let zufallszahlBlumen: number = ((Math.random() * 4) + 0);
+            let b: number = Math.floor(zufallszahlBlumen);
+            let x: number = (Math.random() * (canvas.width - 110) + 110);
+            let y: number = (Math.random() * (canvas.height - 170) + 150);
             switch (b) {
                 case 0:
                     drawFlower1(x, y, "#005B14");
@@ -52,14 +51,17 @@ namespace L5_Biene {
                 default:
                     break;
             }
-        }  
+        }
+          
+        imgData = crc2.getImageData(0, 0, 300, 300);
         
         // Koordinaten der Öffnung des Bienenkorbs
-        imgData = crc2.getImageData(0, 0, 300, 300);
+        
         for (let i: number = 0; i < n; i++) {
-            a[i] = 25;
-            c[i] = 210;
+            x[i] = 25;
+            y[i] = 210;
         }    
+        
         window.setTimeout(animate, 20); 
         
         // Durch Klick auf den Canvas wird eine neue Biene hinzugefügt
@@ -382,29 +384,29 @@ namespace L5_Biene {
     function animate(): void {
         crc2.putImageData(imgData, 0, 0);
         for (let i: number = 0; i < n; i++) {
-            a[i] += Math.random() * 3 - 2;
-            c[i] += Math.random() * 6 - 3;
-            if ( a[i] < 0) {
-                a[i] = 300;
+            x[i] += Math.random() * 3 - 2;
+            y[i] += Math.random() * 6 - 3;
+            if ( x[i] < 0) {
+                x[i] = 300;
             }
-            if ( a[i] > 300) {
-                a[i] = 0;
+            if ( x[i] > 300) {
+                x[i] = 0;
             }
-            if ( c[i] < 0) {
-                c[i] = 300;    
+            if ( y[i] < 0) {
+                y[i] = 300;    
             }
-            if ( c[i] > 300) {
-                c[i] = 0;    
+            if ( y[i] > 300) {
+                y[i] = 0;    
             }
-            drawBiene(a[i], c[i], "#000000", "#FFEF00");
+            drawBiene(x[i], y[i], "#000000", "#FFEF00");
         }
         window.setTimeout(animate, 20);
     }        
     
     // hinzufügen der Bienen 
     function fuegeEineBieneDazu(): void {
-        a.push(25);
-        c.push(210);
+        x.push(25);
+        y.push(210);
         n++;
     }
 }

@@ -1,14 +1,13 @@
-//Aufgabe: Aufgabe5 - Biene
+//Aufgabe: Aufgabe5 - Interfaces: Assoziative Bienen
 //Name: Michelle Zei�ner
 //Matrikel: 254665
-//Datum: 26.4.2017
+//Datum: 3.5.2017
 //Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
-var L5_Biene;
-(function (L5_Biene) {
+var L6_Interface;
+(function (L6_Interface) {
     window.addEventListener("load", init);
     let crc2;
-    let x = [];
-    let y = [];
+    let squares = [];
     let n = 10;
     let imgData;
     function init(_event) {
@@ -50,8 +49,13 @@ var L5_Biene;
         imgData = crc2.getImageData(0, 0, 300, 300);
         // Koordinaten der �ffnung des Bienenkorbs
         for (let i = 0; i < n; i++) {
-            x[i] = 25;
-            y[i] = 210;
+            let s = { x: 0, y: 0, color: " ", colorFluegel: " ", richtung: 0 };
+            s.x = 25;
+            s.y = 210;
+            s.color = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
+            s.colorFluegel = "#B9FFFF";
+            s.richtung = (Math.random() * 2);
+            squares[i] = s;
         }
         window.setTimeout(animate, 20);
         // Durch Klick auf den Canvas wird eine neue Biene hinzugef�gt
@@ -264,22 +268,22 @@ var L5_Biene;
         crc2.stroke();
         crc2.fill();
     }
-    function drawBiene(_x, _y, _fillColor, _strokeColor) {
+    function drawBiene(_x, _y, _color, _colorFluegel) {
         //Fl�gel
         crc2.beginPath();
-        crc2.fillStyle = "#B9FFFF";
+        crc2.fillStyle = _colorFluegel;
         crc2.arc(_x + 1, _y - 8, 5, 0, 2 * Math.PI);
         crc2.closePath();
         crc2.fill();
         crc2.beginPath();
-        crc2.fillStyle = "#B9FFFF";
+        crc2.fillStyle = _colorFluegel; // "#B9FFFF"
         crc2.arc(_x + 9, _y + 3, 5, 0, 2 * Math.PI);
         crc2.closePath();
         crc2.fill();
         //Stachel
         crc2.beginPath();
-        crc2.fillStyle = _fillColor;
-        crc2.strokeStyle = _fillColor;
+        crc2.fillStyle = "#000000";
+        crc2.strokeStyle = "#000000";
         crc2.moveTo(_x - 2, _y + 2);
         crc2.lineTo(_x, _y - 1);
         crc2.lineTo(_x + 1, _y + 1);
@@ -289,8 +293,8 @@ var L5_Biene;
         //K�rper
         //gelb
         crc2.beginPath();
-        crc2.fillStyle = "#FFEF00";
-        crc2.strokeStyle = "#FFEF00";
+        crc2.fillStyle = _color;
+        crc2.strokeStyle = _color;
         crc2.moveTo(_x + 2, _y + 1);
         crc2.lineTo(_x, _y - 2);
         crc2.lineTo(_x + 1, _y - 3);
@@ -307,7 +311,7 @@ var L5_Biene;
         crc2.stroke();
         //gelb
         crc2.beginPath();
-        crc2.strokeStyle = "#FFEF00";
+        crc2.strokeStyle = _color;
         crc2.moveTo(_x + 3, _y - 5);
         crc2.lineTo(_x + 6, _y + 1);
         crc2.closePath();
@@ -321,7 +325,7 @@ var L5_Biene;
         crc2.stroke();
         //gelb
         crc2.beginPath();
-        crc2.strokeStyle = "#FFEF00";
+        crc2.strokeStyle = _color;
         crc2.moveTo(_x + 5, _y - 7);
         crc2.lineTo(_x + 8, _y - 1);
         crc2.closePath();
@@ -350,29 +354,30 @@ var L5_Biene;
     function animate() {
         crc2.putImageData(imgData, 0, 0);
         for (let i = 0; i < n; i++) {
-            x[i] += Math.random() * 3 - 2;
-            y[i] += Math.random() * 6 - 3;
-            if (x[i] < 0) {
-                x[i] = 300;
+            let s = squares[i];
+            s.x += Math.random() * 3 - 2 + s.richtung;
+            s.y += Math.random() * 6 - 3;
+            if (s.x < 0) {
+                s.x = 300;
             }
-            if (x[i] > 300) {
-                x[i] = 0;
+            if (s.x > 300) {
+                s.x = 0;
             }
-            if (y[i] < 0) {
-                y[i] = 300;
+            if (s.y < 0) {
+                s.y = 300;
             }
-            if (y[i] > 300) {
-                y[i] = 0;
+            if (s.y > 300) {
+                s.y = 0;
             }
-            drawBiene(x[i], y[i], "#000000", "#FFEF00");
+            drawBiene(s.x, s.y, s.color, s.colorFluegel);
         }
         window.setTimeout(animate, 20);
     }
     // hinzuf�gen der Bienen 
     function fuegeEineBieneDazu() {
-        x.push(25);
-        y.push(210);
+        squares.push({ x: 20, y: 210, color: "#FFEF00", colorFluegel: "#F2F2F2", richtung: ((Math.random() * 4) + 0) });
+        squares.push({ x: 20, y: 210, color: "#FFEF00", colorFluegel: "#F2F2F2", richtung: ((Math.random() * 4) + 0) });
         n++;
     }
-})(L5_Biene || (L5_Biene = {}));
-//# sourceMappingURL=aufgabe5.js.map
+})(L6_Interface || (L6_Interface = {}));
+//# sourceMappingURL=aufgabe6a.js.map

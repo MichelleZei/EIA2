@@ -3,7 +3,7 @@
 //Matrikel: 254665
 //Datum: 21.3.2017
 //Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener("DOMContentLoaded", function () {
     var n = 5;
     var c;
     var x = 0;

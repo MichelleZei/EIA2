@@ -4,7 +4,7 @@
 //Datum: 21.3.2017
     
 //Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
-document.addEventListener('DOMContentLoaded', function (): void {
+document.addEventListener("DOMContentLoaded", function (): void {
     var n: number = 5;
     var c: string;
     var x: number = 0;

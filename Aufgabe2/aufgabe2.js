@@ -3,7 +3,7 @@
 //Matrikel: 254665
 //Datum: 28.3.2017
 //Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener("DOMContentLoaded", function () {
     let n = 64;
     let size = 120;
     let i = 0;
@@ -48,14 +48,17 @@ document.addEventListener('DOMContentLoaded', function () {
         s.top = _y + "px";
     }
     function zahlDerKoerner() {
+        var alphas;
         let feld = document.getElementsByClassName("felder");
-        let AnzahlKoerner;
+        console.log(feld);
+        let anzahlKoerner;
         for (let i = 0; i < feld.length; i++) {
-            AnzahlKoerner = Math.pow(2, i);
+            anzahlKoerner = Math.pow(2, i);
             if (i > 32) {
-                AnzahlKoerner = AnzahlKoerner.toExponential(6);
+                var anzahlKoernerAsString = String(anzahlKoerner);
+                anzahlKoernerAsString = anzahlKoerner.toExponential(6);
             }
-            feld[i].textContent = AnzahlKoerner.toString();
+            feld[i].textContent = anzahlKoerner.toString();
         }
     }
 });
