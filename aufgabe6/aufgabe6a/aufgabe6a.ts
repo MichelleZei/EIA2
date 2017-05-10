@@ -1,4 +1,4 @@
-//Aufgabe: Aufgabe5 - Interfaces: Assoziative Bienen
+//Aufgabe: Aufgab6a - Interfaces: Assoziative Bienen
 //Name: Michelle Zeiﬂner
 //Matrikel: 254665
 //Datum: 3.5.2017
