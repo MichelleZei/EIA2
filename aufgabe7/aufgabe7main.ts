@@ -67,9 +67,9 @@ namespace L7_Classes {
 
     //     hinzufügen der Bienen 
     function fuegeEineBieneDazu(_event: Event): void {
-        let s: Bienen = new Bienen();
-        bees.push(s);
-//        n++;
+        bees.push();
+        bees.push();
+        n++;
     }
 }
 

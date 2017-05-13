@@ -54,9 +54,9 @@ var L7_Classes;
     }
     //     hinzuf�gen der Bienen 
     function fuegeEineBieneDazu(_event) {
-        let s = new L7_Classes.Bienen();
-        bees.push(s);
-        //        n++;
+        bees.push();
+        bees.push();
+        n++;
     }
 })(L7_Classes || (L7_Classes = {}));
 //# sourceMappingURL=aufgabe7main.js.map
