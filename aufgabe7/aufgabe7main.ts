@@ -57,20 +57,19 @@ namespace L7_Classes {
     // Animation der Bienen
     function animate(): void {
         crc2.putImageData(imgData, 0, 0);
-        for (let i: number = 0; i < n; i++) {
+        for (let i: number = 0; i < bees.length; i++) {
             let s: Bienen = bees[i];
             s.animate();
             s.drawBee();
-//            console.log(n);
         }
         window.setTimeout(animate, 20);
     }
 
     // hinzufügen der Bienen 
-    function fuegeEineBieneDazu(_event: Event): void {    
-        let bienen: Bienen = new Bienen(25, 210, "#000000", "#B9FFFF", (Math.random() * 2));
+    function fuegeEineBieneDazu(_event: Event): void {
+        let bienen: Bienen = new Bienen(25, 210, "hsl(" + Math.random() * 360 + ", 100%, 50%)", "#B9FFFF", (Math.random() * 2));
         bees.push(bienen);
-        //        n++;
+        n++;
     }
     console.log(bees);
 }

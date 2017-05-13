@@ -379,5 +379,6 @@ var L6_Interface;
         squares.push({ x: 20, y: 210, color: "#FFEF00", colorFluegel: "#F2F2F2", richtung: ((Math.random() * 4) + 0) });
         n++;
     }
+    console.log(squares);
 })(L6_Interface || (L6_Interface = {}));
 //# sourceMappingURL=aufgabe6a.js.map

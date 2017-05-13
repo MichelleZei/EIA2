@@ -45,7 +45,7 @@ var L7_Classes;
     // Animation der Bienen
     function animate() {
         L7_Classes.crc2.putImageData(imgData, 0, 0);
-        for (let i = 0; i < n; i++) {
+        for (let i = 0; i < bees.length; i++) {
             let s = bees[i];
             s.animate();
             s.drawBee();
@@ -54,9 +54,9 @@ var L7_Classes;
     }
     // hinzuf�gen der Bienen 
     function fuegeEineBieneDazu(_event) {
-        let bienen = new L7_Classes.Bienen(25, 210, "#000000", "#B9FFFF", (Math.random() * 2));
+        let bienen = new L7_Classes.Bienen(25, 210, "hsl(" + Math.random() * 360 + ", 100%, 50%)", "#B9FFFF", (Math.random() * 2));
         bees.push(bienen);
-        //        n++;
+        n++;
     }
     console.log(bees);
 })(L7_Classes || (L7_Classes = {}));

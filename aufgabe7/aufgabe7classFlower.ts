@@ -14,9 +14,7 @@ namespace L7_Classes {
         zufallszahlBlumen: number;    
         flowers: Flower[] = [];
 
-
         constructor(_x: number, _y: number) {
-            console.log("Hey, I'm Bob!");
             this.x = _x;
             this.y = _y;
         }

@@ -8,7 +8,6 @@ var L7_Classes;
     class Flower {
         constructor(_x, _y) {
             this.flowers = [];
-            console.log("Hey, I'm Bob!");
             this.x = _x;
             this.y = _y;
         }
