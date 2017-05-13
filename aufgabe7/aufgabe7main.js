@@ -53,10 +53,10 @@ var L7_Classes;
         window.setTimeout(animate, 20);
     }
     //     hinzuf�gen der Bienen 
-    function fuegeEineBieneDazu() {
-        bees.push();
-        bees.push();
-        n++;
+    function fuegeEineBieneDazu(_event) {
+        let s = new L7_Classes.Bienen();
+        bees.push(s);
+        //        n++;
     }
 })(L7_Classes || (L7_Classes = {}));
 //# sourceMappingURL=aufgabe7main.js.map

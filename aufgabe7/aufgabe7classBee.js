@@ -118,4 +118,4 @@ var L7_Classes;
     }
     L7_Classes.Bienen = Bienen;
 })(L7_Classes || (L7_Classes = {}));
-//# sourceMappingURL=aufgabe7classes.js.map
+//# sourceMappingURL=aufgabe7classBee.js.map

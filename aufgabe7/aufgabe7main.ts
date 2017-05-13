@@ -34,7 +34,7 @@ namespace L7_Classes {
 
         // Zufallsblumen
         f.setZufallsblume();
-        
+
         imgData = crc2.getImageData(0, 0, 300, 300);
 
         // Koordinaten der Öffnung des Bienenkorbs
@@ -66,10 +66,10 @@ namespace L7_Classes {
     }
 
     //     hinzufügen der Bienen 
-    function fuegeEineBieneDazu(): void {
-        bees.push();
-        bees.push();
-        n++;
+    function fuegeEineBieneDazu(_event: Event): void {
+        let s: Bienen = new Bienen();
+        bees.push(s);
+//        n++;
     }
 }
 
