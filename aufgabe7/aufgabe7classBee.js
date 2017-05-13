@@ -6,6 +6,13 @@
 var L7_Classes;
 (function (L7_Classes) {
     class Bienen {
+        constructor(_x, _y, _color, _colorFluegel, _richtung) {
+            this.x = _x;
+            this.y = _y;
+            this.color = _color;
+            this.colorFluegel = _colorFluegel;
+            this.richtung = _richtung;
+        }
         setPosition() {
             this.x = 25;
             this.y = 210;

@@ -40,7 +40,7 @@ namespace L7_Classes {
         // Koordinaten der Öffnung des Bienenkorbs
 
         for (let i: number = 0; i < n; i++) {
-            let s: Bienen = new Bienen();
+            let s: Bienen = new Bienen(25, 210, "#000000", "#B9FFFF", (Math.random() * 2));
             s.setPosition();
             s.setStyle();
             s.move();
@@ -61,17 +61,18 @@ namespace L7_Classes {
             let s: Bienen = bees[i];
             s.animate();
             s.drawBee();
+//            console.log(n);
         }
         window.setTimeout(animate, 20);
     }
 
     // hinzufügen der Bienen 
-    function fuegeEineBieneDazu(_event: Event): void {
-        let s: Bienen = new Bienen;
-        bees.push(s);
-        //        bees.push();
+    function fuegeEineBieneDazu(_event: Event): void {    
+        let bienen: Bienen = new Bienen(25, 210, "#000000", "#B9FFFF", (Math.random() * 2));
+        bees.push(bienen);
         //        n++;
-    } console.log(bees);
+    }
+    console.log(bees);
 }
 
 

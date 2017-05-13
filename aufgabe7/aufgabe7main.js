@@ -31,7 +31,7 @@ var L7_Classes;
         imgData = L7_Classes.crc2.getImageData(0, 0, 300, 300);
         // Koordinaten der �ffnung des Bienenkorbs
         for (let i = 0; i < n; i++) {
-            let s = new L7_Classes.Bienen();
+            let s = new L7_Classes.Bienen(25, 210, "#000000", "#B9FFFF", (Math.random() * 2));
             s.setPosition();
             s.setStyle();
             s.move();
@@ -54,9 +54,8 @@ var L7_Classes;
     }
     // hinzuf�gen der Bienen 
     function fuegeEineBieneDazu(_event) {
-        let s = new L7_Classes.Bienen;
-        bees.push(s);
-        //        bees.push();
+        let bienen = new L7_Classes.Bienen(25, 210, "#000000", "#B9FFFF", (Math.random() * 2));
+        bees.push(bienen);
         //        n++;
     }
     console.log(bees);

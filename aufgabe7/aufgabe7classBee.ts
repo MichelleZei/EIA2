@@ -12,6 +12,14 @@ namespace L7_Classes {
         colorFluegel: string;
         richtung: number;
         
+        constructor(_x: number, _y: number, _color: string, _colorFluegel: string, _richtung: number) {
+            this.x = _x;
+            this.y = _y;
+            this.color = _color;
+            this.colorFluegel = _colorFluegel;
+            this.richtung = _richtung;
+        }
+        
         setPosition(): void {
             this.x = 25;
             this.y = 210;
