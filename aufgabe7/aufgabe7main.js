@@ -42,7 +42,7 @@ var L7_Classes;
         L7_Classes.canvas.addEventListener("click", fuegeEineBieneDazu);
         L7_Classes.canvas.addEventListener("touch", fuegeEineBieneDazu);
     }
-    //     Animation der Bienen
+    // Animation der Bienen
     function animate() {
         L7_Classes.crc2.putImageData(imgData, 0, 0);
         for (let i = 0; i < n; i++) {
@@ -52,11 +52,13 @@ var L7_Classes;
         }
         window.setTimeout(animate, 20);
     }
-    //     hinzuf�gen der Bienen 
+    // hinzuf�gen der Bienen 
     function fuegeEineBieneDazu(_event) {
-        bees.push();
-        bees.push();
-        n++;
+        let s = new L7_Classes.Bienen;
+        bees.push(s);
+        //        bees.push();
+        //        n++;
     }
+    console.log(bees);
 })(L7_Classes || (L7_Classes = {}));
 //# sourceMappingURL=aufgabe7main.js.map
