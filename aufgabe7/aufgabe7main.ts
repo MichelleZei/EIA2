@@ -35,18 +35,18 @@ namespace L7_Classes {
 
         // Zufallsblumen
         for (let i: number = 0; i < 30; i++) {
-            f.setRandomFlower();
+            f.setRandomPosition();
             switch (f.zufallszahlBlumen) {
                 case 0:
                     f.drawFlower1();
                     break;
 
                 case 1:
-                    f.drawFlower2(); //x, y, "#005B14"
+                    f.drawFlower2();
                     break;
 
                 case 2:
-                    f.drawFlower3(); //x, y, "#005B14"
+                    f.drawFlower3();
                     break;
 
                 default:

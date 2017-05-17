@@ -35,10 +35,10 @@ var L7_Classes;
                     f.drawFlower1();
                     break;
                 case 1:
-                    f.drawFlower2(); //x, y, "#005B14"
+                    f.drawFlower2();
                     break;
                 case 2:
-                    f.drawFlower3(); //x, y, "#005B14"
+                    f.drawFlower3();
                     break;
                 default:
                     break;
