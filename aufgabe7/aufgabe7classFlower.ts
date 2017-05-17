@@ -21,6 +21,9 @@ namespace L7_Classes {
         setRandomPosition(): void {
             this.x = (Math.random() * (canvas.width - 110) + 110);
             this.y = (Math.random() * (canvas.height - 170) + 150);
+        }
+
+        randomFlower(): void {
             this.zufallszahlBlumen = Math.floor((Math.random() * 4) + 0);
         }
 

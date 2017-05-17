@@ -30,6 +30,7 @@ var L7_Classes;
         // Zufallsblumen
         for (let i = 0; i < 30; i++) {
             f.setRandomPosition();
+            f.randomFlower();
             switch (f.zufallszahlBlumen) {
                 case 0:
                     f.drawFlower1();
