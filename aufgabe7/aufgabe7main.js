@@ -7,6 +7,7 @@ var L7_Classes;
 (function (L7_Classes) {
     window.addEventListener("load", init);
     let bees = [];
+    let flowers = [];
     let n = 10;
     let imgData;
     function init(_event) {
@@ -27,7 +28,23 @@ var L7_Classes;
         b.drawIce2();
         b.drawBienenkorb();
         // Zufallsblumen
-        f.setZufallsblume();
+        for (let i = 0; i < 30; i++) {
+            f.setRandomPosition();
+            switch (f.zufallszahlBlumen) {
+                case 0:
+                    f.drawFlower1();
+                    break;
+                case 1:
+                    f.drawFlower2(); //x, y, "#005B14"
+                    break;
+                case 2:
+                    f.drawFlower3(); //x, y, "#005B14"
+                    break;
+                default:
+                    break;
+            }
+            flowers.push(new L7_Classes.Flower(x, y));
+        }
         imgData = L7_Classes.crc2.getImageData(0, 0, 300, 300);
         // Koordinaten der �ffnung des Bienenkorbs
         for (let i = 0; i < n; i++) {

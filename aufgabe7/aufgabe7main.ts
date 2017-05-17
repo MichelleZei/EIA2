@@ -10,6 +10,7 @@ namespace L7_Classes {
     export let crc2: CanvasRenderingContext2D;
     export let canvas: HTMLCanvasElement;
     let bees: Bienen[] = [];
+    let flowers: Flower[] = [];
     let n: number = 10;
     let imgData: ImageData;
 
@@ -33,7 +34,26 @@ namespace L7_Classes {
         b.drawBienenkorb();
 
         // Zufallsblumen
-        f.setZufallsblume();
+        for (let i: number = 0; i < 30; i++) {
+            f.setRandomFlower();
+            switch (f.zufallszahlBlumen) {
+                case 0:
+                    f.drawFlower1();
+                    break;
+
+                case 1:
+                    f.drawFlower2(); //x, y, "#005B14"
+                    break;
+
+                case 2:
+                    f.drawFlower3(); //x, y, "#005B14"
+                    break;
+
+                default:
+                    break;
+            }
+            flowers.push(new Flower(x, y));
+        }
 
         imgData = crc2.getImageData(0, 0, 300, 300);
 

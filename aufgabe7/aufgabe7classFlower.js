@@ -7,31 +7,13 @@ var L7_Classes;
 (function (L7_Classes) {
     class Flower {
         constructor(_x, _y) {
-            this.flowers = [];
             this.x = _x;
             this.y = _y;
         }
-        setZufallsblume() {
-            for (let i = 0; i < 30; i++) {
-                this.zufallszahlBlumen = Math.floor((Math.random() * 4) + 0);
-                this.x = (Math.random() * (L7_Classes.canvas.width - 110) + 110);
-                this.y = (Math.random() * (L7_Classes.canvas.height - 170) + 150);
-                switch (this.zufallszahlBlumen) {
-                    case 0:
-                        this.drawFlower1();
-                        break;
-                    case 1:
-                        this.drawFlower2();
-                        break;
-                    case 2:
-                        this.drawFlower3();
-                        break;
-                    default:
-                        break;
-                }
-                this.flowers.push(new Flower(this.x, this.y));
-            }
-            console.log(this.flowers);
+        setRandomFlower() {
+            this.x = (Math.random() * (L7_Classes.canvas.width - 110) + 110);
+            this.y = (Math.random() * (L7_Classes.canvas.height - 170) + 150);
+            this.zufallszahlBlumen = Math.floor((Math.random() * 4) + 0);
         }
         drawFlower1() {
             // St�ngel

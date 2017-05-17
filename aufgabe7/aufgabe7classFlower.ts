@@ -2,7 +2,7 @@
 //Name: Michelle Zeiﬂner
 //Matrikel: 254665
 //Datum: 9.5.2017
-    
+
 //Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
 
 namespace L7_Classes {
@@ -11,40 +11,19 @@ namespace L7_Classes {
         y: number;
         fillColor: string;
         strokeColor: string;
-        zufallszahlBlumen: number;    
-        flowers: Flower[] = [];
+        zufallszahlBlumen: number;
 
         constructor(_x: number, _y: number) {
             this.x = _x;
             this.y = _y;
         }
 
-        setZufallsblume(): void {
-            for (let i: number = 0; i < 30; i++) {
-                this.zufallszahlBlumen = Math.floor((Math.random() * 4) + 0);
-                this.x = (Math.random() * (canvas.width - 110) + 110);
-                this.y = (Math.random() * (canvas.height - 170) + 150);
-                switch (this.zufallszahlBlumen) {
-                    case 0:
-                        this.drawFlower1();
-                        break;
-
-                    case 1:
-                        this.drawFlower2();
-                        break;
-
-                    case 2:
-                        this.drawFlower3();
-                        break;
-
-                    default:
-                        break;
-                }
-                this.flowers.push(new Flower(this.x, this.y));
-            }
-            console.log(this.flowers);
+        setRandomFlower(): void {
+            this.x = (Math.random() * (canvas.width - 110) + 110);
+            this.y = (Math.random() * (canvas.height - 170) + 150);
+            this.zufallszahlBlumen = Math.floor((Math.random() * 4) + 0);
         }
-        
+
         drawFlower1(): void {
             // St‰ngel
             crc2.beginPath();
