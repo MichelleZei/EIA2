@@ -15,7 +15,6 @@ var L7_Classes;
         let x = 0;
         let fillColor = "#A9F5F2";
         let b = new L7_Classes.Background(x, y, fillColor);
-        let f = new L7_Classes.Flower(x, y);
         L7_Classes.canvas = document.getElementsByTagName("canvas")[0];
         L7_Classes.crc2 = L7_Classes.canvas.getContext("2d");
         // Funktionen aufrufen, die gemalt werden sollen
@@ -29,6 +28,7 @@ var L7_Classes;
         b.drawBienenkorb();
         // Zufallsblumen
         for (let i = 0; i < 30; i++) {
+            let f = new L7_Classes.Flower(x, y);
             f.setRandomPosition();
             f.randomFlower();
             switch (f.zufallszahlBlumen) {
@@ -48,7 +48,7 @@ var L7_Classes;
         }
         imgData = L7_Classes.crc2.getImageData(0, 0, 300, 300);
         // Koordinaten der �ffnung des Bienenkorbs
-        for (let i = 0; i < n; i++) {
+        for (let i = 0; i < 10; i++) {
             let s = new L7_Classes.Bienen(25, 210, "#000000", "#B9FFFF", (Math.random() * 2));
             s.setPosition();
             s.setStyle();

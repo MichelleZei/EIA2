@@ -2,7 +2,7 @@
 //Name: Michelle Zeißner
 //Matrikel: 254665
 //Datum: 9.5.2017
-    
+
 //Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
 namespace L7_Classes {
     export class Bienen {
@@ -11,7 +11,7 @@ namespace L7_Classes {
         color: string;
         colorFluegel: string;
         richtung: number;
-        
+
         constructor(_x: number, _y: number, _color: string, _colorFluegel: string, _richtung: number) {
             this.x = _x;
             this.y = _y;
@@ -19,7 +19,7 @@ namespace L7_Classes {
             this.colorFluegel = _colorFluegel;
             this.richtung = _richtung;
         }
-        
+
         setPosition(): void {
             this.x = 25;
             this.y = 210;
@@ -32,8 +32,8 @@ namespace L7_Classes {
         
         move(): void {
             this.richtung = (Math.random() * 2);
-        }
-        
+}
+
         animate(): void {
             this.x += Math.random() * 3 - 2 + this.richtung;
             this.y += Math.random() * 6 - 3;
@@ -50,7 +50,7 @@ namespace L7_Classes {
                 this.y = 0;
             }
         }
-        
+
         drawBee(): void {
             //Flügel
             crc2.beginPath();

@@ -19,7 +19,6 @@ namespace L7_Classes {
         let x: number = 0;
         let fillColor: string = "#A9F5F2";
         let b: Background = new Background(x, y, fillColor);
-        let f: Flower = new Flower(x, y);
 
         canvas = document.getElementsByTagName("canvas")[0];
         crc2 = canvas.getContext("2d");
@@ -35,6 +34,7 @@ namespace L7_Classes {
 
         // Zufallsblumen
         for (let i: number = 0; i < 30; i++) {
+            let f: Flower = new Flower(x, y);
             f.setRandomPosition();
             f.randomFlower();
             switch (f.zufallszahlBlumen) {
@@ -60,7 +60,7 @@ namespace L7_Classes {
 
         // Koordinaten der Öffnung des Bienenkorbs
 
-        for (let i: number = 0; i < n; i++) {
+        for (let i: number = 0; i < 10; i++) {
             let s: Bienen = new Bienen(25, 210, "#000000", "#B9FFFF", (Math.random() * 2));
             s.setPosition();
             s.setStyle();
