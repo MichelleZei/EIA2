@@ -6,15 +6,15 @@
 //Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
 namespace L8_Inheritance {
     export class NormalBees extends Bienen {
+        richtung: number;
         
-        constructor(_x: number, _y: number, _color: string, _colorFluegel: string, _richtung: number) {
-            super(_x, _y, _color, _colorFluegel, _richtung);
-            this.x = _x;
-            this.y = _y;
-            this.color = _color;
-            this.colorFluegel = _colorFluegel;
-            this.richtung = _richtung;
-            this.speed = 0.1;
+        constructor() {
+            super();
+        }
+        
+        move(): void {
+            this.x += Math.random() * 3;
+            this.y += Math.random() * 6 - 3;   
         }
                      
         draw(): void {

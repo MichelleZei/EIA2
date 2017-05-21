@@ -6,14 +6,12 @@
 var L8_Inheritance;
 (function (L8_Inheritance) {
     class NormalBees extends L8_Inheritance.Bienen {
-        constructor(_x, _y, _color, _colorFluegel, _richtung) {
-            super(_x, _y, _color, _colorFluegel, _richtung);
-            this.x = _x;
-            this.y = _y;
-            this.color = _color;
-            this.colorFluegel = _colorFluegel;
-            this.richtung = _richtung;
-            this.speed = 0.1;
+        constructor() {
+            super();
+        }
+        move() {
+            this.x += Math.random() * 3;
+            this.y += Math.random() * 6 - 3;
         }
         draw() {
             //Fl�gel

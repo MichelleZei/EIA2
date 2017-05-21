@@ -6,8 +6,29 @@
 var L8_Inheritance;
 (function (L8_Inheritance) {
     class HoneyBees extends L8_Inheritance.Bienen {
-        constructor(_x, _y, _color, _colorFluegel, _richtung) {
-            super(_x, _y, _color, _colorFluegel, _richtung);
+        constructor() {
+            super();
+            this.speed = 0.08;
+            this.setTargetFlower();
+        }
+        setTargetFlower() {
+            let targetflower = Math.round(Math.random() * (L8_Inheritance.flowers.length - 1));
+            this.xTarget = L8_Inheritance.flowers[targetflower].x;
+            this.yTarget = L8_Inheritance.flowers[targetflower].y;
+        }
+        move() {
+            let xDiff = this.xTarget - this.x;
+            let yDiff = this.yTarget - this.y;
+            if (Math.abs(xDiff) < 1 && Math.abs(yDiff) < 1) {
+                this.setTargetFlower();
+            }
+            else {
+                this.x += xDiff * this.speed;
+                this.y += yDiff * this.speed;
+            }
+            if (this.x == this.xTarget && this.y == this.yTarget) {
+                this.setTargetFlower();
+            }
         }
         draw() {
             //Fl�gel
@@ -34,8 +55,8 @@ var L8_Inheritance;
             //K�rper
             //gelb
             L8_Inheritance.crc2.beginPath();
-            L8_Inheritance.crc2.fillStyle = "f8f800";
-            L8_Inheritance.crc2.strokeStyle = "f8f800";
+            L8_Inheritance.crc2.fillStyle = "#ffff00";
+            L8_Inheritance.crc2.strokeStyle = "#ffff00";
             L8_Inheritance.crc2.moveTo(this.x + 2, this.y + 1);
             L8_Inheritance.crc2.lineTo(this.x, this.y - 2);
             L8_Inheritance.crc2.lineTo(this.x + 1, this.y - 3);
@@ -52,7 +73,7 @@ var L8_Inheritance;
             L8_Inheritance.crc2.stroke();
             //gelb
             L8_Inheritance.crc2.beginPath();
-            L8_Inheritance.crc2.strokeStyle = "f8f800";
+            L8_Inheritance.crc2.strokeStyle = "#ffff00";
             L8_Inheritance.crc2.moveTo(this.x + 3, this.y - 5);
             L8_Inheritance.crc2.lineTo(this.x + 6, this.y + 1);
             L8_Inheritance.crc2.closePath();
@@ -66,7 +87,7 @@ var L8_Inheritance;
             L8_Inheritance.crc2.stroke();
             //gelb
             L8_Inheritance.crc2.beginPath();
-            L8_Inheritance.crc2.strokeStyle = "f8f800";
+            L8_Inheritance.crc2.strokeStyle = "#ffff00";
             L8_Inheritance.crc2.moveTo(this.x + 5, this.y - 7);
             L8_Inheritance.crc2.lineTo(this.x + 8, this.y - 1);
             L8_Inheritance.crc2.closePath();
@@ -90,9 +111,6 @@ var L8_Inheritance;
             L8_Inheritance.crc2.lineTo(this.x + 18, this.y - 5);
             L8_Inheritance.crc2.closePath();
             L8_Inheritance.crc2.stroke();
-        }
-        move() {
-            this.richtung = (Math.random() * 20);
         }
     }
     L8_Inheritance.HoneyBees = HoneyBees;

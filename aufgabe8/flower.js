@@ -9,6 +9,7 @@ var L8_Inheritance;
         constructor(_x, _y) {
             this.x = _x;
             this.y = _y;
+            this.setRandomPosition();
         }
         setRandomPosition() {
             this.x = (Math.random() * (L8_Inheritance.canvas.width - 110) + 110);

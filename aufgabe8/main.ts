@@ -9,9 +9,8 @@ namespace L8_Inheritance {
     window.addEventListener("load", init);
     export let crc2: CanvasRenderingContext2D;
     export let canvas: HTMLCanvasElement;
-    let normalBees: Bienen[] = [];
-    let honeyBees: Bienen[] = []; 
-    let flowers: Flower[] = [];
+    export let flowers: Flower[] = [];
+    let allBees: Bienen[] = [];
     let n: number = 10;
     let imgData: ImageData;
 
@@ -23,7 +22,9 @@ namespace L8_Inheritance {
 
         canvas = document.getElementsByTagName("canvas")[0];
         crc2 = canvas.getContext("2d");
+
         // Funktionen aufrufen, die gemalt werden sollen
+
         b.drawBackground();
         b.drawSun();
         b.drawWiese();
@@ -34,6 +35,7 @@ namespace L8_Inheritance {
         b.drawBienenkorb();
 
         // Zufallsblumen
+
         for (let i: number = 0; i < 30; i++) {
             let zufallszahlBlumen: number = Math.floor((Math.random() * 4) + 0);
             switch (zufallszahlBlumen) {
@@ -60,22 +62,23 @@ namespace L8_Inheritance {
             }
             flowers.push(new Flower(x, y));
         }
-        console.log(flowers);
+
+        //Bild speichern
 
         imgData = crc2.getImageData(0, 0, 300, 300);
 
         // Koordinaten der Öffnung des Bienenkorbs
 
-        for (let i: number = 0; i < 10; i++) {
-            let nb: NormalBees = new NormalBees(25, 210, "#000000", "#B9FFFF", (Math.random() * 2));
-            normalBees[i] = nb; 
-        }
-        
         for (let i: number = 0; i < 5; i++) {
-            let honey: HoneyBees = new HoneyBees(25, 210, "#000000", "#B9FFFF", (Math.random() * 2));
-            honeyBees[i] = honey;
+            let nb: NormalBees = new NormalBees();
+            allBees.push(nb);
         }
-//        console.log(Bienen);
+
+        for (let i: number = 0; i < 5; i++) {
+            let honey: HoneyBees = new HoneyBees();
+            allBees.push(honey);
+        }
+        console.log(allBees);
 
         window.setTimeout(animate, 20);
 
@@ -87,26 +90,31 @@ namespace L8_Inheritance {
     // Animation der Bienen
     function animate(): void {
         crc2.putImageData(imgData, 0, 0);
-        for (let i: number = 0; i < Bienen.length; i++) {
-            let nb: Bienen = normalBees[i];
-            nb.animate();
-            nb.draw();
+        for (let i: number = 0; i < allBees.length; i++) {
+            let all: Bienen = allBees[i];
+            if (all.x < 0) {
+                all.x = 300;
+            }
+            if (all.x > 300) {
+                all.x = 0;
+            }
+            if (all.y < 0) {
+                all.y = 300;
+            }
+            if (all.y > 300) {
+                all.y = 0;
+            }
+            all.update();
         }
-//        for (let i: number = 0; i < Bienen.length; i++) {
-//            let honey: Bienen = honeyBees[i];
-//            honey.animate();
-//            honey.draw();    
-//        }
         window.setTimeout(animate, 20);
     }
 
     // hinzufügen der Bienen 
     function fuegeEineBieneDazu(_event: Event): void {
-        let bienen: Bienen = new NormalBees(25, 210, "hsl(" + Math.random() * 360 + ", 100%, 50%)", "#B9FFFF", (Math.random() * 2));
-        normalBees.push(bienen);
+        let all: Bienen = new HoneyBees();
+        allBees.push(all);
         n++;
     }
-    //    console.log(bees);
 }
 
 

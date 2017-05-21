@@ -16,6 +16,7 @@ namespace L8_Inheritance {
         constructor(_x: number, _y: number) {
             this.x = _x;
             this.y = _y;
+            this.setRandomPosition();
         }
 
         setRandomPosition(): void {
