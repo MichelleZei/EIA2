@@ -9,7 +9,6 @@ namespace L8_Inheritance {
         xTarget: number;
         yTarget: number;
         speed: number;
-        random: number;
 
         constructor() {
             super();
