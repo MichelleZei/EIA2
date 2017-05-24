@@ -23,10 +23,6 @@ namespace L7_Classes {
             this.y = (Math.random() * (canvas.height - 170) + 150);
         }
 
-        randomFlower(): void {
-            this.zufallszahlBlumen = Math.floor((Math.random() * 4) + 0);
-        }
-
         drawFlower1(): void {
             // Stängel
             crc2.beginPath();

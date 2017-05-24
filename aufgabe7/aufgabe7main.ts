@@ -36,8 +36,8 @@ namespace L7_Classes {
         for (let i: number = 0; i < 30; i++) {
             let f: Flower = new Flower(x, y);
             f.setRandomPosition();
-            f.randomFlower();
-            switch (f.zufallszahlBlumen) {
+            let zufallszahlBlumen: number = Math.floor((Math.random() * 4) + 0);
+            switch (zufallszahlBlumen) {
                 case 0:
                     f.drawFlower1();
                     break;

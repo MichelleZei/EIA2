@@ -30,8 +30,8 @@ var L7_Classes;
         for (let i = 0; i < 30; i++) {
             let f = new L7_Classes.Flower(x, y);
             f.setRandomPosition();
-            f.randomFlower();
-            switch (f.zufallszahlBlumen) {
+            let zufallszahlBlumen = Math.floor((Math.random() * 4) + 0);
+            switch (zufallszahlBlumen) {
                 case 0:
                     f.drawFlower1();
                     break;

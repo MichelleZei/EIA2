@@ -14,9 +14,6 @@ var L7_Classes;
             this.x = (Math.random() * (L7_Classes.canvas.width - 110) + 110);
             this.y = (Math.random() * (L7_Classes.canvas.height - 170) + 150);
         }
-        randomFlower() {
-            this.zufallszahlBlumen = Math.floor((Math.random() * 4) + 0);
-        }
         drawFlower1() {
             // St�ngel
             L7_Classes.crc2.beginPath();
