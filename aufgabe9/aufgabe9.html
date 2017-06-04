@@ -1,0 +1,52 @@
+<!-- 
+Aufgabe: Aufgabe9 - Eisdealer
+Name: Michelle Zeißner
+Matrikel: 254665
+Datum: 24.5.2017
+	
+Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Aufgabe9</title>
+<link href="aufgabe9.css" rel="stylesheet">
+<script type="text/javascript" src="aufgabe9.js"></script>
+</head>
+<body>
+	<h1>Schmackofatz</h1>
+	<legend>Dein Eis</legend>
+	<fieldset id="eis">
+		<legend>Deine Eissorten</legend>
+	</fieldset>
+	<fieldset id="waffel">
+		<legend>Deine Waffel</legend>
+	</fieldset>
+	<fieldset id="verzierung">
+		<legend>Deine Verzierung</legend>
+	</fieldset>
+	<fieldset>
+		<legend>Bestellen</legend>
+		Vorname <input type="text" name="Vorname" placeholder="Vorname" id = "vorname" minlength="3" maxlength="10" required class="bestellungpruefen"/>
+		Name <input type="text" name="Name" placeholder="Name" id="nachname" minlength="3" maxlength="10" required class="bestellungpruefen"/>
+		<hr />
+		Adresse <input type="text" name="strasse" placeholder="Straße, Hausnummer" id="strasse" required class="bestellungpruefen"/> 
+		<input type="text" name="ort" placeholder="PLZ, Ort" id="ort" required class="bestellungpruefen"/>
+		<hr />
+		Mail
+		<input type="email" name="Mail" placeholder="E-mail" required class="bestellungpruefen"/>
+		<hr/>
+		<input type="radio" name="Versand" value="Expressversand" id="Versand1" id="Lieferart"/> 
+		<label for="radio1">Expressversand</label> 
+		<input type="radio" name="Versand" value="Standartversand" id="Versand2" id="Lieferart"/>
+		<label for="radio2">Standartversand</label>
+	</fieldset>
+	<button id="button">Bestellung prüfen</button>
+	<div>
+		<h2>Aktuelles Eis:</h2>
+		<p id="bestellung"></p>
+		<p id="summe">Summe:</p>
+	</div>
+</body>
+</html>

@@ -1,0 +1,96 @@
+/*Aufgabe: Aufgabe9 - Eisdealer
+Name: Michelle Zeiﬂner
+Matrikel: 254665
+Datum: 28.5.2017
+    
+Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.*/
+@import url("https://fonts.googleapis.com/css?family=Khula");
+
+html {
+	font-family: "Kuhla", sans-serif;
+	background-color: #A9F5F2;
+	margin: 0em;
+	padding: 0em;
+	margin: 0em;
+}
+
+h1 {
+	position: relative;
+	top: 0em;
+	left: 20%;
+	fontsize: 4em;
+}
+
+fieldset {
+	max-width: 50%;
+	border-color: black;
+	border-style: solid;
+	margin: 1em;
+	padding: 0.5em;
+}
+
+label::after {
+	content: "";
+	display: block;
+}
+
+hr {
+	border: none;
+}
+
+legend {
+	fontsize: 1em;
+}
+
+button {
+	font-weight: bold;
+	background-color: #26978B;
+	margin: 0.5em;
+	padding: 0.5em;
+	border-color: black;
+	border-style: solid;
+	margin: 0.5em;
+}
+
+button: hover {
+	background-color: white;
+	color: black;
+}
+
+div {
+	position: absolute;
+	top: 8em;
+	right: 1em;
+	height: 7.vw;
+	width: 5.vw;
+	border-color: black;
+	border-style: solid;
+}
+
+h2 {
+	fontsize: 1.5em;
+	margin: 1%;
+	padding: 1%;
+}
+
+p {
+	margin: 1%;
+	padding: 1%;
+}
+
+#summe {
+	position: relative;
+	top: 20%;
+}
+
+input:invalid {
+	background: #F0C060;
+}
+
+input:valid {
+	background: white;
+}
+
+input:required {
+	background: #aaaaaa;
+}
