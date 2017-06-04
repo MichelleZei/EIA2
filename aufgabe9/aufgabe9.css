@@ -5,6 +5,7 @@ Datum: 28.5.2017
     
 Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.*/
 @import url("https://fonts.googleapis.com/css?family=Khula");
+/*-------------------------Smartphone------------------------*/
 
 html {
 	font-family: "Kuhla", sans-serif;
@@ -52,25 +53,14 @@ button {
 	margin: 0.5em;
 }
 
-button: hover {
-	background-color: white;
-	color: black;
-}
-
 div {
-	position: absolute;
-	top: 8em;
-	right: 1em;
-	height: 7.vw;
-	width: 5.vw;
+	position: fixed;
+	top: 5em;
+	right: 0.5em;
+	height: 5.vw;
+	width:5.vw;
 	border-color: black;
 	border-style: solid;
-}
-
-h2 {
-	fontsize: 1.5em;
-	margin: 1%;
-	padding: 1%;
 }
 
 p {
@@ -93,4 +83,21 @@ input:valid {
 
 input:required {
 	background: #aaaaaa;
+}
+
+@media screen and (max-width: 450px) {
+	h2 {
+		display: none;
+	}
+	#bestellung{
+		display: none;
+	}
+}
+
+@media screen and (max-width: 1024px) {
+	h2 {
+		fontsize: 1.5em;
+		margin: 1%;
+		padding: 1%;
+	}
 }
