@@ -85,6 +85,8 @@ input:required {
 	background: #aaaaaa;
 }
 
+/*-------------------------Tablet------------------------*/
+
 @media screen and (max-width: 450px) {
 	h2 {
 		display: none;
@@ -93,6 +95,8 @@ input:required {
 		display: none;
 	}
 }
+
+/*-------------------------Desktop------------------------*/
 
 @media screen and (max-width: 1024px) {
 	h2 {
