@@ -3,8 +3,8 @@
 //Matrikel: 254665
 //Datum: 22.6.2017
 //Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
-var L9_Eisdealer;
-(function (L9_Eisdealer) {
+var L10_EisdealerErweitert;
+(function (L10_EisdealerErweitert) {
     window.addEventListener("load", init);
     // abspeichern der verschiedenen M�glichkeiten in verschiedene Arrays
     let eissortenArray = ["Vanille", "Schoko", "Erdbeer", "Himbeer", "Zitrone", "Cookie", "Bueno", "Kinderschokolade", "Ferrero Roche"];
@@ -141,5 +141,5 @@ var L9_Eisdealer;
             }
         }
     }
-})(L9_Eisdealer || (L9_Eisdealer = {}));
+})(L10_EisdealerErweitert || (L10_EisdealerErweitert = {}));
 //# sourceMappingURL=aufgabe10.js.map

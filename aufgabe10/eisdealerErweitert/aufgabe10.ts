@@ -4,7 +4,7 @@
 //Datum: 22.6.2017
 
 //Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
-namespace L9_Eisdealer {
+namespace L10_EisdealerErweitert {
     window.addEventListener("load", init);
     // abspeichern der verschiedenen Möglichkeiten in verschiedene Arrays
     let eissortenArray: string[] = ["Vanille", "Schoko", "Erdbeer", "Himbeer", "Zitrone", "Cookie", "Bueno", "Kinderschokolade", "Ferrero Roche"];
