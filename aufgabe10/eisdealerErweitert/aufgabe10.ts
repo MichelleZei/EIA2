@@ -156,7 +156,6 @@ namespace L10_EisdealerErweitert {
             // wenn sie richtig ist, wird die Bestellung aufgenommen
             else {
                 alert("Vielen Dank für Ihre Bestellung!");
-                location.reload();
             }
         }
     }

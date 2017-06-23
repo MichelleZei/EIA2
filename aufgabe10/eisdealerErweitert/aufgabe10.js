@@ -137,7 +137,6 @@ var L10_EisdealerErweitert;
             }
             else {
                 alert("Vielen Dank f�r Ihre Bestellung!");
-                location.reload();
             }
         }
     }
