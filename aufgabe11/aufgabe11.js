@@ -1,4 +1,4 @@
-//Aufgabe: Aufgabe10 - Eisdealer Erweiterung
+//Aufgabe: Aufgabe11 - Database
 //Name: Michelle Zei�ner
 //Matrikel: 254665
 //Datum: 22.6.2017
@@ -10,8 +10,13 @@ var DatabaseClient;
         console.log("Init");
         let insertButton = document.getElementById("insert");
         let refreshButton = document.getElementById("refresh");
+        let searchButton = document.getElementById("searchbutton");
         insertButton.addEventListener("click", insert);
         refreshButton.addEventListener("click", refresh);
+        searchButton.addEventListener("click", search);
+    }
+    function search(_event) {
+        let inputName = document.getElementById("searchname");
     }
     function insert(_event) {
         let inputs = document.getElementsByTagName("input");
@@ -28,7 +33,7 @@ var DatabaseClient;
     }
     function sendRequest(_query, _callback) {
         let xhr = new XMLHttpRequest();
-        //xhr.open("GET", "http://localhost:8100?" + _query, true);
+        //        xhr.open("GET", "http://localhost:8100?" + _query, true);
         xhr.open("GET", "https://senddata11.herokuapp.com" + _query, true);
         xhr.addEventListener("readystatechange", _callback);
         xhr.send();
