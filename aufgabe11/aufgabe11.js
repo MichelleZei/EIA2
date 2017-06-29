@@ -29,7 +29,7 @@ var DatabaseClient;
     function sendRequest(_query, _callback) {
         let xhr = new XMLHttpRequest();
         //xhr.open("GET", "http://localhost:8100?" + _query, true);
-        xhr.open("GET", "https://senddata.herokuapp.com");
+        xhr.open("GET", "https://senddata11.herokuapp.com" + _query, true);
         xhr.addEventListener("readystatechange", _callback);
         xhr.send();
     }
