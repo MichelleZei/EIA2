@@ -13,20 +13,20 @@ var DatabaseClient;
         let searchButton = document.getElementById("searchbutton");
         insertButton.addEventListener("click", insert);
         refreshButton.addEventListener("click", refresh);
-        searchButton.addEventListener("click", search);
+        //        searchButton.addEventListener("click", search);
     }
-    function search(_event) {
-        let inputName = document.getElementById("searchname");
-        let inputVorname = document.getElementById("searchvorname");
-        let inputMatrikel = document.getElementById("searchmatrikel");
-        let query = "command=insert";
-        for (var i = 0; i < 10; i++) {
-            if (inputMatrikel.value == query[i]) {
-                alert("Name : " + query[i]);
-            }
-        }
-        console.log("Hello");
-    }
+    //    function search(_event: Event): void {
+    //        let inputName: HTMLInputElement = <HTMLInputElement>document.getElementById("searchname");
+    //        let inputVorname: HTMLInputElement = <HTMLInputElement>document.getElementById("searchvorname");
+    //        let inputMatrikel: HTMLInputElement = <HTMLInputElement>document.getElementById("searchmatrikel");
+    //        let query: string = "command=insert";
+    //        for ( var i: number = 0; i < 10; i++) {
+    //            if (inputMatrikel.value == query[i]) {
+    //                alert("Name : " + query[i]);
+    //            }
+    //        }
+    //        console.log("Hello");
+    //    }
     function insert(_event) {
         let inputs = document.getElementsByTagName("input");
         let query = "command=insert";
