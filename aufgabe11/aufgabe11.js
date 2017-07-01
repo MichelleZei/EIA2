@@ -17,6 +17,15 @@ var DatabaseClient;
     }
     function search(_event) {
         let inputName = document.getElementById("searchname");
+        let inputVorname = document.getElementById("searchvorname");
+        let inputMatrikel = document.getElementById("searchmatrikel");
+        let query = "command=insert";
+        for (var i = 0; i < 10; i++) {
+            if (inputMatrikel.value == query[i]) {
+                alert("Name : " + query[i]);
+            }
+        }
+        console.log("Hello");
     }
     function insert(_event) {
         let inputs = document.getElementsByTagName("input");
@@ -33,8 +42,8 @@ var DatabaseClient;
     }
     function sendRequest(_query, _callback) {
         let xhr = new XMLHttpRequest();
-        //        xhr.open("GET", "http://localhost:8100?" + _query, true);
-        xhr.open("GET", "https://senddata11.herokuapp.com" + _query, true);
+        xhr.open("GET", "http://localhost:8100?" + _query, true);
+        //        xhr.open("GET", "https://senddata11.herokuapp.com" + _query, true);
         xhr.addEventListener("readystatechange", _callback);
         xhr.send();
     }
