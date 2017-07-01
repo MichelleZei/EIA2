@@ -4,104 +4,16 @@ Matrikel: 254665
 Datum: 22.6.2017
     
 Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.*/
-@import url("https://fonts.googleapis.com/css?family=Khula");
-/*-------------------------Smartphone------------------------*/
 
-html {
-	font-family: "Kuhla", sans-serif;
-	background-color: #A9F5F2;
-	margin: 0em;
-	padding: 0em;
-	margin: 0em;
+* {
+	display: block;
+	vertical-align: top
 }
 
-h1 {
-	position: relative;
-	top: 0em;
-	left: 20%;
-	fontsize: 4em;
+head {
+	display: none;
 }
 
 fieldset {
-	max-width: 50%;
-	border-color: black;
-	border-style: solid;
-	margin: 1em;
-	padding: 0.5em;
-}
-
-label::after {
-	content: "";
-	display: block;
-}
-
-hr {
-	border: none;
-}
-
-legend {
-	fontsize: 1em;
-}
-
-button {
-	font-weight: bold;
-	background-color: #26978B;
-	margin: 0.5em;
-	padding: 0.5em;
-	border-color: black;
-	border-style: solid;
-	margin: 0.5em;
-}
-
-div {
-	position: fixed;
-	top: 5em;
-	right: 0.5em;
-	height: 5.vw;
-	width:5.vw;
-	border-color: black;
-	border-style: solid;
-}
-
-p {
-	margin: 1%;
-	padding: 1%;
-}
-
-#summe {
-	position: relative;
-	top: 20%;
-}
-
-input:invalid {
-	background: #F0C060;
-}
-
-input:valid {
-	background: white;
-}
-
-input:required {
-	background: #aaaaaa;
-}
-
-/*-------------------------Tablet------------------------*/
-
-@media screen and (max-width: 450px) {
-	h2 {
-		display: none;
-	}
-	#bestellung{
-		display: none;
-	}
-}
-
-/*-------------------------Desktop------------------------*/
-
-@media screen and (max-width: 1024px) {
-	h2 {
-		fontsize: 1.5em;
-		margin: 1%;
-		padding: 1%;
-	}
+	width: 300px;
 }
