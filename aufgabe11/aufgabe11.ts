@@ -14,24 +14,24 @@ namespace DatabaseClient {
         let searchButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("searchbutton");
         insertButton.addEventListener("click", insert);
         refreshButton.addEventListener("click", refresh);
-        searchButton.addEventListener("click", search);
+        searchButton.addEventListener("click", search); //Button klickbar machen
     }
-
+    // wenn der Button search geklickt wurde, wird der Name und die Matrikelnummer unter query gespeichert und ein Request versendet
     function search(_event: Event): void {
         let inputName: HTMLInputElement = <HTMLInputElement>document.getElementById("searchname");
         let inputMatrikel: HTMLInputElement = <HTMLInputElement>document.getElementById("searchmatrikel");
-        let query: string = "command=insert";
-        query += "&name=" + inputName.value;
-        query += "&matrikel=" + inputMatrikel.value;
+        let query: string = "command=search";
+        query += "&nameSearch=" + inputName.value;
+        query += "&matrikelSearch=" + inputMatrikel.value;
         console.log(query);
         sendRequest(query, handleSearchResponse);
-        
-        console.log("Hello");
     }
-    
-    function handleSearchResponse(_event: Event): void {
-        
-        
+    // wenn eine Response gekommen ist, wie sie verarbeitet/wie die Ausgabe aussehen soll
+    function handleSearchResponse(_event: ProgressEvent): void {
+        let xhr: XMLHttpRequest = (<XMLHttpRequest>_event.target);
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            alert(xhr.response);
+        }
     }
 
     function insert(_event: Event): void {
@@ -51,8 +51,8 @@ namespace DatabaseClient {
 
     function sendRequest(_query: string, _callback: EventListener): void {
         let xhr: XMLHttpRequest = new XMLHttpRequest();
-        xhr.open("GET", "http://localhost:8100?" + _query, true);
-//        xhr.open("GET", "https://senddata11.herokuapp.com" + _query, true);
+//        xhr.open("GET", "http://localhost:8100?" + _query, true);
+        xhr.open("GET", "https://senddata11.herokuapp.com" + _query, true);
         xhr.addEventListener("readystatechange", _callback);
         xhr.send();
     }
