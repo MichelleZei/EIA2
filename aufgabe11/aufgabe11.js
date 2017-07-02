@@ -13,20 +13,20 @@ var DatabaseClient;
         let searchButton = document.getElementById("searchbutton");
         insertButton.addEventListener("click", insert);
         refreshButton.addEventListener("click", refresh);
-        //        searchButton.addEventListener("click", search);
+        searchButton.addEventListener("click", search);
     }
-    //    function search(_event: Event): void {
-    //        let inputName: HTMLInputElement = <HTMLInputElement>document.getElementById("searchname");
-    //        let inputVorname: HTMLInputElement = <HTMLInputElement>document.getElementById("searchvorname");
-    //        let inputMatrikel: HTMLInputElement = <HTMLInputElement>document.getElementById("searchmatrikel");
-    //        let query: string = "command=insert";
-    //        for ( var i: number = 0; i < 10; i++) {
-    //            if (inputMatrikel.value == query[i]) {
-    //                alert("Name : " + query[i]);
-    //            }
-    //        }
-    //        console.log("Hello");
-    //    }
+    function search(_event) {
+        let inputName = document.getElementById("searchname");
+        let inputMatrikel = document.getElementById("searchmatrikel");
+        let query = "command=insert";
+        query += "&name=" + inputName.value;
+        query += "&matrikel=" + inputMatrikel.value;
+        console.log(query);
+        sendRequest(query, handleSearchResponse);
+        console.log("Hello");
+    }
+    function handleSearchResponse(_event) {
+    }
     function insert(_event) {
         let inputs = document.getElementsByTagName("input");
         let query = "command=insert";
@@ -42,8 +42,8 @@ var DatabaseClient;
     }
     function sendRequest(_query, _callback) {
         let xhr = new XMLHttpRequest();
-        //        xhr.open("GET", "http://localhost:8100?" + _query, true);
-        xhr.open("GET", "https://senddata11.herokuapp.com" + _query, true);
+        xhr.open("GET", "http://localhost:8100?" + _query, true);
+        //        xhr.open("GET", "https://senddata11.herokuapp.com" + _query, true);
         xhr.addEventListener("readystatechange", _callback);
         xhr.send();
     }

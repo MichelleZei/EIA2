@@ -14,21 +14,25 @@ namespace DatabaseClient {
         let searchButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("searchbutton");
         insertButton.addEventListener("click", insert);
         refreshButton.addEventListener("click", refresh);
-//        searchButton.addEventListener("click", search);
+        searchButton.addEventListener("click", search);
     }
 
-//    function search(_event: Event): void {
-//        let inputName: HTMLInputElement = <HTMLInputElement>document.getElementById("searchname");
-//        let inputVorname: HTMLInputElement = <HTMLInputElement>document.getElementById("searchvorname");
-//        let inputMatrikel: HTMLInputElement = <HTMLInputElement>document.getElementById("searchmatrikel");
-//        let query: string = "command=insert";
-//        for ( var i: number = 0; i < 10; i++) {
-//            if (inputMatrikel.value == query[i]) {
-//                alert("Name : " + query[i]);
-//            }
-//        }
-//        console.log("Hello");
-//    }
+    function search(_event: Event): void {
+        let inputName: HTMLInputElement = <HTMLInputElement>document.getElementById("searchname");
+        let inputMatrikel: HTMLInputElement = <HTMLInputElement>document.getElementById("searchmatrikel");
+        let query: string = "command=insert";
+        query += "&name=" + inputName.value;
+        query += "&matrikel=" + inputMatrikel.value;
+        console.log(query);
+        sendRequest(query, handleSearchResponse);
+        
+        console.log("Hello");
+    }
+    
+    function handleSearchResponse(_event: Event): void {
+        
+        
+    }
 
     function insert(_event: Event): void {
         let inputs: NodeListOf<HTMLInputElement> = document.getElementsByTagName("input");
@@ -47,8 +51,8 @@ namespace DatabaseClient {
 
     function sendRequest(_query: string, _callback: EventListener): void {
         let xhr: XMLHttpRequest = new XMLHttpRequest();
-//        xhr.open("GET", "http://localhost:8100?" + _query, true);
-        xhr.open("GET", "https://senddata11.herokuapp.com" + _query, true);
+        xhr.open("GET", "http://localhost:8100?" + _query, true);
+//        xhr.open("GET", "https://senddata11.herokuapp.com" + _query, true);
         xhr.addEventListener("readystatechange", _callback);
         xhr.send();
     }
