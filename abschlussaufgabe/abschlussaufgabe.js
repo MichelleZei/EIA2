@@ -18,6 +18,7 @@ var abschlussaufgabe;
         let color = "#81F7F3";
         let colorbody = "#31B404";
         let b = new abschlussaufgabe.Background(x, y, fillColor);
+        let button = document.getElementsByTagName("button")[0];
         abschlussaufgabe.canvas = document.getElementsByTagName("canvas")[0];
         abschlussaufgabe.crc2 = abschlussaufgabe.canvas.getContext("2d");
         // Funktionsaufruf, um den Hintergrund zu zeichnen
@@ -38,6 +39,7 @@ var abschlussaufgabe;
         //EventListener auf Canvas legen
         abschlussaufgabe.canvas.addEventListener("click", abschiessen);
         abschlussaufgabe.canvas.addEventListener("touch", abschiessen);
+        button.addEventListener("click", reload);
     }
     // Wenn ein Klick auf das Canvas erfolgt ist, 
     function abschiessen(_event) {
@@ -51,12 +53,11 @@ var abschlussaufgabe;
                 // dann soll es nach unten fallen und die Zahl der abgeschossenen Ufos erh�hen.
                 falldown(i, u);
                 h++;
-                hochzaehlen(h);
-                console.log(h);
+                TrefferZaehlen(h);
             }
         }
     }
-    // Funktion, dass die angeklickten Ufos runterfallen
+    // Funktion, die die angeklickten Ufos runterfallen l�sst
     function falldown(_i, _u) {
         abschlussaufgabe.crc2.putImageData(imgData, 0, 0);
         for (let i = 0; i < n; i++) {
@@ -66,33 +67,33 @@ var abschlussaufgabe;
         }
         window.setTimeout(falldown, 20);
     }
-    // Funktion, dass die Abgeschossenen Ufos mitgez�hlt werden
-    function hochzaehlen(_h) {
-        let hochzaehlen = document.getElementById("hochzaehlen");
-        hochzaehlen.innerText = "Treffer: " + _h.toString();
+    // Funktion, die die Abgeschossenen Ufos mitgez�hlt werden
+    function TrefferZaehlen(_h) {
+        let zaehlen = document.getElementById("hochzaehlen");
+        zaehlen.innerText = "Treffer: " + _h.toString();
     }
     // Funktion, wie sich die Ufos bewegen und was passiert, wenn sie rechts oder links aus dem Canvas fliegen
     function animate() {
         abschlussaufgabe.crc2.putImageData(imgData, 0, 0);
         for (let i = 0; i < n; i++) {
             let u = ufos[i];
-            if (u.x > 600) {
-                alert("Game Over");
+            if (u.x > 630) {
+                nichtErwischt.push(u);
             }
-            //            if (u.y > 600) {
-            //                alert("Game Over");
-            //            }
-            if (u.x < 0) {
-                alert("Game Over");
+            if (u.x < -30) {
+                nichtErwischt.push(u);
             }
-            //            if (u.y < 0) {
-            //                alert("Game Over");
-            //            }
             u.move();
             u.draw();
+            if (nichtErwischt.length == 20) {
+                alert("Game Over");
+            }
         }
         window.setTimeout(animate, 20);
     }
-    console.log(nichtErwischt);
+    // Nochmal von neu anfangen (Seite l�dt nochmal neu)
+    function reload() {
+        location.reload();
+    }
 })(abschlussaufgabe || (abschlussaufgabe = {}));
 //# sourceMappingURL=abschlussaufgabe.js.map

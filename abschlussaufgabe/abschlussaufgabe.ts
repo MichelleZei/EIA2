@@ -23,6 +23,7 @@ namespace abschlussaufgabe {
         let color: string = "#81F7F3";
         let colorbody: string = "#31B404";
         let b: Background = new Background(x, y, fillColor);
+        let button: HTMLElement = document.getElementsByTagName("button")[0];
 
         canvas = document.getElementsByTagName("canvas")[0];
         crc2 = canvas.getContext("2d");
@@ -54,6 +55,7 @@ namespace abschlussaufgabe {
 
         canvas.addEventListener("click", abschiessen);
         canvas.addEventListener("touch", abschiessen);
+        button.addEventListener("click", reload);
     }
 
     // Wenn ein Klick auf das Canvas erfolgt ist, 
@@ -75,13 +77,12 @@ namespace abschlussaufgabe {
                 // dann soll es nach unten fallen und die Zahl der abgeschossenen Ufos erhöhen.
                 falldown(i, u);
                 h++;
-                hochzaehlen(h);
-                console.log(h);
+                TrefferZaehlen(h);
             }
         }
     }
 
-    // Funktion, dass die angeklickten Ufos runterfallen
+    // Funktion, die die angeklickten Ufos runterfallen lässt
 
     function falldown(_i: number, _u: Ufos): void {
         crc2.putImageData(imgData, 0, 0);
@@ -93,11 +94,11 @@ namespace abschlussaufgabe {
         window.setTimeout(falldown, 20);
     }
 
-    // Funktion, dass die Abgeschossenen Ufos mitgezählt werden
+    // Funktion, die die Abgeschossenen Ufos mitgezählt werden
 
-    function hochzaehlen(_h: number): void {
-        let hochzaehlen: HTMLElement = document.getElementById("hochzaehlen");
-        hochzaehlen.innerText = "Treffer: " + _h.toString();
+    function TrefferZaehlen(_h: number): void {
+        let zaehlen: HTMLElement = document.getElementById("hochzaehlen");
+        zaehlen.innerText = "Treffer: " + _h.toString();
     }
 
     // Funktion, wie sich die Ufos bewegen und was passiert, wenn sie rechts oder links aus dem Canvas fliegen
@@ -106,22 +107,26 @@ namespace abschlussaufgabe {
         crc2.putImageData(imgData, 0, 0);
         for (let i: number = 0; i < n; i++) {
             let u: Ufos = ufos[i];
-            if (u.x > 600) {
-                alert("Game Over");
+            if (u.x > 630) {
+                nichtErwischt.push(u);
             }
-            //            if (u.y > 600) {
-            //                alert("Game Over");
-            //            }
-            if (u.x < 0) {
-                alert("Game Over");
+            if (u.x < -30) {
+                nichtErwischt.push(u);
             }
-            //            if (u.y < 0) {
-            //                alert("Game Over");
-            //            }
+
             u.move();
             u.draw();
+            if (nichtErwischt.length == 20) {
+                alert("Game Over");
+            }
         }
 
         window.setTimeout(animate, 20);
-    } console.log(nichtErwischt);
+    }
+
+    // Nochmal von neu anfangen (Seite lädt nochmal neu)
+
+    function reload(): void {
+        location.reload();
+    }
 }

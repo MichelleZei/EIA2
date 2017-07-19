@@ -6,16 +6,34 @@ Datum: 12.07.2017
 Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.*/
 @import url("https://fonts.googleapis.com/css?family=Khula");
 /*-------------------------Smartphone------------------------*/
-
 html {
 	font-family: "Kuhla", sans-serif;
 }
 
-div {
-	font-size: 1em;
+#button {
 	position: fixed;
 	top: 1em;
-	left: 5%;
+	left: 10%;
+	background-color: none;
+	border: none;
+	color: none;
+	padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+}
+
+#button: hover {
+	color: "#070719";
+	background-color: white ;
+}
+
+div {
+	font-size: 12px;
+	position: fixed;
+	top: 1.5em;
+	left: 3%;
 	color: white;
 }
 /*-------------------------Tablet------------------------*/
@@ -24,9 +42,9 @@ div {
 /*-------------------------Desktop------------------------*/
 @media screen and (max-width: 1024px) {
 	div {
-		font-size: 1.5em;
+		font-size: 12px;
 		position: fixed;
-		top: 1em;
-		left: 25%;
+		top: 1.5em;
+		left: 70%;
 	}
 }
