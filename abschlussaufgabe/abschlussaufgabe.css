@@ -4,11 +4,29 @@ Matrikel: 254665
 Datum: 12.07.2017
     
 Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.*/
+@import url("https://fonts.googleapis.com/css?family=Khula");
+/*-------------------------Smartphone------------------------*/
 
-div{
-	font-size: 1.5em;
+html {
+	font-family: "Kuhla", sans-serif;
+}
+
+div {
+	font-size: 1em;
 	position: fixed;
 	top: 1em;
-	left: 25%;
+	left: 5%;
 	color: white;
+}
+/*-------------------------Tablet------------------------*/
+@media screen and (max-width: 450px) {
+}
+/*-------------------------Desktop------------------------*/
+@media screen and (max-width: 1024px) {
+	div {
+		font-size: 1.5em;
+		position: fixed;
+		top: 1em;
+		left: 25%;
+	}
 }

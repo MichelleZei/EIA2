@@ -12,11 +12,11 @@ namespace abschlussaufgabe {
     export let canvas: HTMLCanvasElement;
     let imgData: ImageData;
     let ufos: Ufos[] = [];
-    //    let ufosNichtErwischt: Ufos[] = [];
+    let nichtErwischt: Ufos[] = [];
     let n: number = 5;
+    let h: number = 0;
 
     function init(_event: Event): void {
-        //Funktionsaufrufe für die Dinge, die gemalt werden sollen
         let y: number;
         let x: number;
         let fillColor: string;
@@ -27,13 +27,15 @@ namespace abschlussaufgabe {
         canvas = document.getElementsByTagName("canvas")[0];
         crc2 = canvas.getContext("2d");
 
-        //Hintergrund zeichnen
+        // Funktionsaufruf, um den Hintergrund zu zeichnen
 
         b.draw();
 
         //Bild speichern
 
         imgData = crc2.getImageData(0, 0, 600, 600);
+
+        // UfosRechts und UfosLinks fünf mal malen
 
         for (let i: number = 0; i < 5; i++) {
             let rechts: UfosRechts = new UfosRechts(x, y, color, colorbody);
@@ -43,6 +45,7 @@ namespace abschlussaufgabe {
             let links: UfosLinks = new UfosLinks(x, y, color, colorbody);
             ufos.push(links);
         }
+
         console.log(ufos);
 
         window.setTimeout(animate, 20);
@@ -52,40 +55,52 @@ namespace abschlussaufgabe {
         canvas.addEventListener("click", abschiessen);
         canvas.addEventListener("touch", abschiessen);
     }
+
     // Wenn ein Klick auf das Canvas erfolgt ist, 
+
     function abschiessen(_event: MouseEvent): void {
+
         // wird über jedes Ufo drüber geschaut, 
+
         for (let i: number = 0; i < ufos.length; i++) {
-            let h: number = 0;
+
             let u: Ufos = ufos[i];
-            let diffx: number = ufos[i].x - _event.clientX;
-            let diffy: number = ufos[i].y - _event.clientY;
+            let diffx: number = ufos[i].x - _event.clientX; // Abstand des Mausklicks zur x-Position des Ufos[i] ermitteln
+            let diffy: number = ufos[i].y - _event.clientY; // Abstand des Mausklicks zur y-Position des Ufos[i] ermitteln
+
             // ob es in der Nähe des Klicks war. Wenn ja, 
+
             if (Math.abs(diffx) < 60 && Math.abs(diffy) < 60) {
+
                 // dann soll es nach unten fallen und die Zahl der abgeschossenen Ufos erhöhen.
-//                u.fall();
                 falldown(i, u);
                 h++;
                 hochzaehlen(h);
                 console.log(h);
             }
-        } 
+        }
     }
+
+    // Funktion, dass die angeklickten Ufos runterfallen
 
     function falldown(_i: number, _u: Ufos): void {
         crc2.putImageData(imgData, 0, 0);
         for (let i: number = 0; i < n; i++) {
-            _u.fall();
+            //            _u.fall();
+            _u.y += 10;
             _u.draw();
         }
-//        _u.y += 10; //_u.fall();
         window.setTimeout(falldown, 20);
     }
 
+    // Funktion, dass die Abgeschossenen Ufos mitgezählt werden
+
     function hochzaehlen(_h: number): void {
         let hochzaehlen: HTMLElement = document.getElementById("hochzaehlen");
-        hochzaehlen.innerText = "Abgeschossenen Ufos: " + _h.toString();
+        hochzaehlen.innerText = "Treffer: " + _h.toString();
     }
+
+    // Funktion, wie sich die Ufos bewegen und was passiert, wenn sie rechts oder links aus dem Canvas fliegen
 
     function animate(): void {
         crc2.putImageData(imgData, 0, 0);
@@ -94,19 +109,19 @@ namespace abschlussaufgabe {
             if (u.x > 600) {
                 alert("Game Over");
             }
-            if (u.y > 600) {
-                alert("Game Over");
-            }
+            //            if (u.y > 600) {
+            //                alert("Game Over");
+            //            }
             if (u.x < 0) {
                 alert("Game Over");
             }
-            if (u.y < 0) {
-                alert("Game Over");
-            }
+            //            if (u.y < 0) {
+            //                alert("Game Over");
+            //            }
             u.move();
             u.draw();
         }
 
         window.setTimeout(animate, 20);
-    }
+    } console.log(nichtErwischt);
 }

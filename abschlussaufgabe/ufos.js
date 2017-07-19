@@ -12,7 +12,7 @@ var abschlussaufgabe;
             this.colorbody = _colorbody;
         }
         fall() {
-            this.y += 10;
+            //nix
         }
         move() {
             //nix

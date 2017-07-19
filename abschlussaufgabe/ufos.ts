@@ -20,7 +20,7 @@ namespace abschlussaufgabe {
         }
         
         fall(): void {
-            this.y += 10;    
+            //nix
         }
         
         move(): void {
