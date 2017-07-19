@@ -18,18 +18,13 @@ namespace abschlussaufgabe {
             this.x = 1;
             this.y = Math.random() * 500;
         }
-        
+
         move(): void {
-//            if (this.status == false) {
-                this.x += 2 * this.speed;
-            }
-//            else {
-//                this.fall();
-//            }
-//        }
-        
+            this.x += 2 * this.speed;
+        }
+
         fall(): void {
-            this.y += 1;    
+            this.y += 1;
         }
 
         draw(): void {

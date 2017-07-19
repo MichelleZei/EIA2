@@ -13,13 +13,8 @@ var abschlussaufgabe;
             this.y = Math.random() * 500;
         }
         move() {
-            //            if (this.status == false) {
             this.x += 2 * this.speed;
         }
-        //            else {
-        //                this.fall();
-        //            }
-        //        }
         fall() {
             this.y += 1;
         }

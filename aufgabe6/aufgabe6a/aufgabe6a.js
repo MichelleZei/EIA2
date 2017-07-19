@@ -7,7 +7,7 @@ var L6_Interface;
 (function (L6_Interface) {
     window.addEventListener("load", init);
     let crc2;
-    let squares = [];
+    let bienen = [];
     let n = 10;
     let imgData;
     function init(_event) {
@@ -55,7 +55,7 @@ var L6_Interface;
             s.color = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
             s.colorFluegel = "#B9FFFF";
             s.richtung = (Math.random() * 2);
-            squares[i] = s;
+            bienen[i] = s;
         }
         window.setTimeout(animate, 20);
         // Durch Klick auf den Canvas wird eine neue Biene hinzugef�gt
@@ -354,7 +354,7 @@ var L6_Interface;
     function animate() {
         crc2.putImageData(imgData, 0, 0);
         for (let i = 0; i < n; i++) {
-            let s = squares[i];
+            let s = bienen[i];
             s.x += Math.random() * 3 - 2 + s.richtung;
             s.y += Math.random() * 6 - 3;
             if (s.x < 0) {
@@ -375,10 +375,10 @@ var L6_Interface;
     }
     // hinzuf�gen der Bienen 
     function fuegeEineBieneDazu() {
-        squares.push({ x: 20, y: 210, color: "#FFEF00", colorFluegel: "#F2F2F2", richtung: ((Math.random() * 4) + 0) });
-        squares.push({ x: 20, y: 210, color: "#FFEF00", colorFluegel: "#F2F2F2", richtung: ((Math.random() * 4) + 0) });
+        bienen.push({ x: 20, y: 210, color: "#FFEF00", colorFluegel: "#F2F2F2", richtung: ((Math.random() * 4) + 0) });
+        bienen.push({ x: 20, y: 210, color: "#FFEF00", colorFluegel: "#F2F2F2", richtung: ((Math.random() * 4) + 0) });
         n++;
     }
-    console.log(squares);
+    console.log(bienen);
 })(L6_Interface || (L6_Interface = {}));
 //# sourceMappingURL=aufgabe6a.js.map

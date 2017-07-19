@@ -12,12 +12,7 @@ var abschlussaufgabe;
             this.y = Math.random() * 600;
         }
         move() {
-            //            if (this.status == false) {
             this.x -= 5 * this.speed;
-            //            }
-            //            else {
-            //                this.y += 10;
-            //            }
         }
         fall() {
             this.y += 1;

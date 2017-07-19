@@ -19,16 +19,11 @@ namespace abschlussaufgabe {
         }
         
         move(): void {
-//            if (this.status == false) {
                 this.x -= 5 * this.speed;
-//            }
-//            else {
-//                this.y += 10;
-//            }
         }
         
         fall(): void {
-            this.y += 1;    
+            this.y += 1 ;    
         }
         
         draw(): void {
