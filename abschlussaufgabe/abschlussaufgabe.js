@@ -57,27 +57,12 @@ var abschlussaufgabe;
                 if (status == false) {
                     // dann soll es nach unten fallen, die Zahl der abgeschossenen Ufos erh�hen und den status auf true (getroffen) �ndern.
                     ufos[i].status = true; // getroffen
-                    //                    falldown(i, u, status);
                     h++;
                     TrefferZaehlen(h);
                 }
             }
         }
     }
-    // Funktion, die die angeklickten Ufos runterfallen l�sst
-    //    function falldown(_i: number, _u: Ufos, _status: boolean): void {
-    //        crc2.putImageData(imgData, 0, 0);
-    //        for (let i: number = 0; i < ufos.length; i++) {
-    //            let u: Ufos = ufos[_i];
-    //            if (u.y > 700) {
-    //                ufos.splice(i);
-    //                console.log(ufos.length);
-    //            }
-    //            _u.fall();
-    //            _u.draw();
-    //            window.setTimeout(falldown(_i, _u, _status), 20);
-    //        }
-    //    }
     // Funktion, die die Abgeschossenen Ufos mitgez�hlt werden
     function TrefferZaehlen(_h) {
         let zaehlen = document.getElementById("hochzaehlen");
@@ -93,6 +78,10 @@ var abschlussaufgabe;
             }
             if (u.x < -40) {
                 nichtErwischt.push(u);
+            }
+            if (u.y > 700) {
+                ufos.splice(i);
+                console.log(ufos.length);
             }
             u.move();
             u.draw();

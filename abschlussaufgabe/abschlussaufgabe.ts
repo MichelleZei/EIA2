@@ -81,7 +81,6 @@ namespace abschlussaufgabe {
                 if (status == false) {
                     // dann soll es nach unten fallen, die Zahl der abgeschossenen Ufos erhöhen und den status auf true (getroffen) ändern.
                     ufos[i].status = true; // getroffen
-//                    falldown(i, u, status);
                     h++;
                     TrefferZaehlen(h);
                 }
@@ -89,22 +88,6 @@ namespace abschlussaufgabe {
             }
         }
     }
-
-    // Funktion, die die angeklickten Ufos runterfallen lässt
-
-//    function falldown(_i: number, _u: Ufos, _status: boolean): void {
-//        crc2.putImageData(imgData, 0, 0);
-//        for (let i: number = 0; i < ufos.length; i++) {
-//            let u: Ufos = ufos[_i];
-//            if (u.y > 700) {
-//                ufos.splice(i);
-//                console.log(ufos.length);
-//            }
-//            _u.fall();
-//            _u.draw();
-//            window.setTimeout(falldown(_i, _u, _status), 20);
-//        }
-//    }
 
     // Funktion, die die Abgeschossenen Ufos mitgezählt werden
 
@@ -125,6 +108,10 @@ namespace abschlussaufgabe {
             if (u.x < -40) {
                 nichtErwischt.push(u);
             }
+            if (u.y > 700) {
+                ufos.splice(i);
+                console.log(ufos.length);
+            }
             u.move();
             u.draw();
             if (nichtErwischt.length == 20) {
@@ -140,9 +127,9 @@ namespace abschlussaufgabe {
     function reload(): void {
         location.reload();
     }
-    
+
     // Ufos fliegen von allein nach einer bestimmten Zeit rein.
-    
+
     function addUfoRechts(): void {
         let neu: Ufos = new UfosRechts(x, y, color, colorbody, status);
         ufos.push(neu);
