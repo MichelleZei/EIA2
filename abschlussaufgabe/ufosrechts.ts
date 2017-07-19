@@ -12,18 +12,23 @@ namespace abschlussaufgabe {
         color: string;
         colorbody: string;
 
-        constructor(_x: number, _y: number, _color: string, _colorbody: string) {
+        constructor(_x: number, _y: number, _color: string, _colorbody: string, _status: boolean) {
             super(_color, _colorbody);
             this.x = 600;
             this.y = Math.random() * 600;
         }
         
         move(): void {
-            this.x -= 5 * this.speed;
+//            if (this.status == false) {
+                this.x -= 5 * this.speed;
+//            }
+//            else {
+//                this.y += 10;
+//            }
         }
         
         fall(): void {
-            this.y += 10;    
+            this.y += 1;    
         }
         
         draw(): void {

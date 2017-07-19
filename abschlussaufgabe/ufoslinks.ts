@@ -12,7 +12,7 @@ namespace abschlussaufgabe {
         color: string;
         colorbody: string;
 
-        constructor(_x: number, _y: number, _color: string, _colorbody: string) {
+        constructor(_x: number, _y: number, _color: string, _colorbody: string, _status: boolean) {
             super(_color, _colorbody);
             this.colorbody = _colorbody;
             this.x = 1;
@@ -20,11 +20,16 @@ namespace abschlussaufgabe {
         }
         
         move(): void {
-            this.x += 2 * this.speed;
-        }
+//            if (this.status == false) {
+                this.x += 2 * this.speed;
+            }
+//            else {
+//                this.fall();
+//            }
+//        }
         
         fall(): void {
-            this.y += 10;    
+            this.y += 1;    
         }
 
         draw(): void {

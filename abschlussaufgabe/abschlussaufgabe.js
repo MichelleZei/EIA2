@@ -11,12 +11,14 @@ var abschlussaufgabe;
     let nichtErwischt = [];
     let n = 5;
     let h = 0;
+    let status = false;
     function init(_event) {
         let y;
         let x;
         let fillColor;
         let color = "#81F7F3";
         let colorbody = "#31B404";
+        //        let status: boolean = false;
         let b = new abschlussaufgabe.Background(x, y, fillColor);
         let button = document.getElementsByTagName("button")[0];
         abschlussaufgabe.canvas = document.getElementsByTagName("canvas")[0];
@@ -27,14 +29,15 @@ var abschlussaufgabe;
         imgData = abschlussaufgabe.crc2.getImageData(0, 0, 600, 600);
         // UfosRechts und UfosLinks f�nf mal malen
         for (let i = 0; i < 5; i++) {
-            let rechts = new abschlussaufgabe.UfosRechts(x, y, color, colorbody);
+            let rechts = new abschlussaufgabe.UfosRechts(x, y, color, colorbody, status);
             ufos.push(rechts);
         }
         for (let i = 0; i < 5; i++) {
-            let links = new abschlussaufgabe.UfosLinks(x, y, color, colorbody);
+            let links = new abschlussaufgabe.UfosLinks(x, y, color, colorbody, status);
             ufos.push(links);
         }
         console.log(ufos);
+        console.log(status);
         window.setTimeout(animate, 20);
         //EventListener auf Canvas legen
         abschlussaufgabe.canvas.addEventListener("click", abschiessen);
@@ -50,22 +53,26 @@ var abschlussaufgabe;
             let diffy = ufos[i].y - _event.clientY; // Abstand des Mausklicks zur y-Position des Ufos[i] ermitteln
             // ob es in der N�he des Klicks war. Wenn ja, 
             if (Math.abs(diffx) < 60 && Math.abs(diffy) < 60) {
-                // dann soll es nach unten fallen und die Zahl der abgeschossenen Ufos erh�hen.
-                falldown(i, u);
+                // dann soll es nach unten fallen, die Zahl der abgeschossenen Ufos erh�hen und den status auf true (getroffen) �ndern.
+                status = true; // getroffen
+                falldown(i, u, status);
                 h++;
                 TrefferZaehlen(h);
             }
         }
     }
     // Funktion, die die angeklickten Ufos runterfallen l�sst
-    function falldown(_i, _u) {
-        abschlussaufgabe.crc2.putImageData(imgData, 0, 0);
-        for (let i = 0; i < n; i++) {
-            //            _u.fall();
-            _u.y += 10;
-            _u.draw();
-        }
-        window.setTimeout(falldown, 20);
+    function falldown(_i, _u, _status) {
+        //        crc2.putImageData(imgData, 0, 0);
+        //        for (let i: number = 0; i < ufos.length; i++) {
+        //            let u: Ufos = ufos[_i];
+        //            if (u.y > 700) {
+        //                ufos.splice(i);
+        //            }
+        _u.fall();
+        _u.draw();
+        window.setTimeout(falldown(_i, _u, _status), 5);
+        //        }
     }
     // Funktion, die die Abgeschossenen Ufos mitgez�hlt werden
     function TrefferZaehlen(_h) {
@@ -73,20 +80,21 @@ var abschlussaufgabe;
         zaehlen.innerText = "Treffer: " + _h.toString();
     }
     // Funktion, wie sich die Ufos bewegen und was passiert, wenn sie rechts oder links aus dem Canvas fliegen
-    function animate() {
+    function animate(_i, _u, _status) {
         abschlussaufgabe.crc2.putImageData(imgData, 0, 0);
-        for (let i = 0; i < n; i++) {
+        for (let i = 0; i < ufos.length; i++) {
             let u = ufos[i];
-            if (u.x > 630) {
+            if (u.x > 640) {
                 nichtErwischt.push(u);
             }
-            if (u.x < -30) {
+            if (u.x < -40) {
                 nichtErwischt.push(u);
             }
             u.move();
             u.draw();
             if (nichtErwischt.length == 20) {
                 alert("Game Over");
+                location.reload();
             }
         }
         window.setTimeout(animate, 20);

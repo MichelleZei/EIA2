@@ -7,9 +7,11 @@ var abschlussaufgabe;
 (function (abschlussaufgabe) {
     class Ufos {
         constructor(_color, _colorbody) {
+            this.status = false; //nicht getroffen
             this.speed = 1;
             this.color = _color;
             this.colorbody = _colorbody;
+            this.status = false;
         }
         fall() {
             //nix

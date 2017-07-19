@@ -6,17 +6,22 @@
 var abschlussaufgabe;
 (function (abschlussaufgabe) {
     class UfosLinks extends abschlussaufgabe.Ufos {
-        constructor(_x, _y, _color, _colorbody) {
+        constructor(_x, _y, _color, _colorbody, _status) {
             super(_color, _colorbody);
             this.colorbody = _colorbody;
             this.x = 1;
             this.y = Math.random() * 500;
         }
         move() {
+            //            if (this.status == false) {
             this.x += 2 * this.speed;
         }
+        //            else {
+        //                this.fall();
+        //            }
+        //        }
         fall() {
-            this.y += 10;
+            this.y += 1;
         }
         draw() {
             //K�rper

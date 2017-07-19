@@ -6,16 +6,21 @@
 var abschlussaufgabe;
 (function (abschlussaufgabe) {
     class UfosRechts extends abschlussaufgabe.Ufos {
-        constructor(_x, _y, _color, _colorbody) {
+        constructor(_x, _y, _color, _colorbody, _status) {
             super(_color, _colorbody);
             this.x = 600;
             this.y = Math.random() * 600;
         }
         move() {
+            //            if (this.status == false) {
             this.x -= 5 * this.speed;
+            //            }
+            //            else {
+            //                this.y += 10;
+            //            }
         }
         fall() {
-            this.y += 10;
+            this.y += 1;
         }
         draw() {
             //K�rper
