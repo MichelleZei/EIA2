@@ -92,47 +92,48 @@ namespace abschlussaufgabe {
         crc2.putImageData(imgData, 0, 0);
         for (let i: number = 0; i < ufos.length; i++) {
             let u: Ufos = ufos[_i];
-            //            if (u.y > 700) {
-            //                ufos.splice(i);
-            //            }
+            if (u.y > 700) {
+                ufos.splice(i);
+                console.log(ufos.length);
+            }
             _u.fall();
             _u.draw();
             window.setTimeout(falldown(_i, _u, _status), 20);
-            //        }
-        }
-
-        // Funktion, die die Abgeschossenen Ufos mitgezählt werden
-
-        function TrefferZaehlen(_h: number): void {
-            let zaehlen: HTMLElement = document.getElementById("hochzaehlen");
-            zaehlen.innerText = "Treffer: " + _h.toString();
-        }
-
-        // Funktion, wie sich die Ufos bewegen und was passiert, wenn sie rechts oder links aus dem Canvas fliegen
-
-        function animate(_i: number, _u: Ufos, _status: boolean): void {
-            crc2.putImageData(imgData, 0, 0);
-            for (let i: number = 0; i < ufos.length; i++) {
-                let u: Ufos = ufos[i];
-                if (u.x > 640) {
-                    nichtErwischt.push(u);
-                }
-                if (u.x < -40) {
-                    nichtErwischt.push(u);
-                }
-                u.move();
-                u.draw();
-                if (nichtErwischt.length == 20) {
-                    alert("Game Over");
-                    location.reload();
-                }
-            }
-            window.setTimeout(animate, 20);
-        }
-
-        // Nochmal von neu anfangen (Seite lädt nochmal neu)
-
-        function reload(): void {
-            location.reload();
         }
     }
+
+    // Funktion, die die Abgeschossenen Ufos mitgezählt werden
+
+    function TrefferZaehlen(_h: number): void {
+        let zaehlen: HTMLElement = document.getElementById("hochzaehlen");
+        zaehlen.innerText = "Treffer: " + _h.toString();
+    }
+
+    // Funktion, wie sich die Ufos bewegen und was passiert, wenn sie rechts oder links aus dem Canvas fliegen
+
+    function animate(_i: number, _u: Ufos, _status: boolean): void {
+        crc2.putImageData(imgData, 0, 0);
+        for (let i: number = 0; i < ufos.length; i++) {
+            let u: Ufos = ufos[i];
+            if (u.x > 640) {
+                nichtErwischt.push(u);
+            }
+            if (u.x < -40) {
+                nichtErwischt.push(u);
+            }
+            u.move();
+            u.draw();
+            if (nichtErwischt.length == 20) {
+                alert("Game Over");
+                location.reload();
+            }
+        }
+        window.setTimeout(animate, 20);
+    }
+
+    // Nochmal von neu anfangen (Seite lädt nochmal neu)
+
+    function reload(): void {
+        location.reload();
+    }
+}
