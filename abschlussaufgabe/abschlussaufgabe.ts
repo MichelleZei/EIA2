@@ -72,15 +72,15 @@ namespace abschlussaufgabe {
         for (let i: number = 0; i < ufos.length; i++) {
 
             let u: Ufos = ufos[i];
-            let diffx: number = ufos[i].x - _event.clientX; // Abstand des Mausklicks zur x-Position des Ufos[i] ermitteln
-            let diffy: number = ufos[i].y - _event.clientY; // Abstand des Mausklicks zur y-Position des Ufos[i] ermitteln
+            let diffx: number = u.x - _event.clientX; // Abstand des Mausklicks zur x-Position des Ufos[i] ermitteln
+            let diffy: number = u.y - _event.clientY; // Abstand des Mausklicks zur y-Position des Ufos[i] ermitteln
 
             // ob es in der Nähe des Klicks war. Wenn ja, 
 
             if (Math.abs(diffx) < 60 && Math.abs(diffy) < 60) {
-                if (status == false) {
+                if (u.status == false) {
                     // dann soll es nach unten fallen, die Zahl der abgeschossenen Ufos erhöhen und den status auf true (getroffen) ändern.
-                    status = true; // getroffen
+                    u.status = true;
                     h++;
                     TrefferZaehlen(h);
                     console.log(status);
@@ -103,10 +103,10 @@ namespace abschlussaufgabe {
         for (let i: number = 0; i < ufos.length; i++) {
             let u: Ufos = ufos[i];
             if (u.x > 640) {
-                nichtErwischt.push(u);
+                nichtErwischt.push(ufos[i]);
             }
             if (u.x < -40) {
-                nichtErwischt.push(u);
+                nichtErwischt.push(ufos[i]);
             }
             if (u.y > 700) {
                 ufos.splice(i);
@@ -114,10 +114,10 @@ namespace abschlussaufgabe {
             }
             u.move();
             u.draw();
-            if (nichtErwischt.length == 20) {
-                alert("Game Over");
-                location.reload();
-            }
+        }
+        if (nichtErwischt.length > 20) {
+            alert("Game Over");
+            location.reload();
         }
         window.setTimeout(animate, 20);
     }

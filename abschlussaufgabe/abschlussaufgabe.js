@@ -50,13 +50,13 @@ var abschlussaufgabe;
         // wird �ber jedes Ufo dr�ber geschaut, 
         for (let i = 0; i < ufos.length; i++) {
             let u = ufos[i];
-            let diffx = ufos[i].x - _event.clientX; // Abstand des Mausklicks zur x-Position des Ufos[i] ermitteln
-            let diffy = ufos[i].y - _event.clientY; // Abstand des Mausklicks zur y-Position des Ufos[i] ermitteln
+            let diffx = u.x - _event.clientX; // Abstand des Mausklicks zur x-Position des Ufos[i] ermitteln
+            let diffy = u.y - _event.clientY; // Abstand des Mausklicks zur y-Position des Ufos[i] ermitteln
             // ob es in der N�he des Klicks war. Wenn ja, 
             if (Math.abs(diffx) < 60 && Math.abs(diffy) < 60) {
-                if (status == false) {
+                if (u.status == false) {
                     // dann soll es nach unten fallen, die Zahl der abgeschossenen Ufos erh�hen und den status auf true (getroffen) �ndern.
-                    status = true; // getroffen
+                    u.status = true;
                     h++;
                     TrefferZaehlen(h);
                     console.log(status);
@@ -75,10 +75,10 @@ var abschlussaufgabe;
         for (let i = 0; i < ufos.length; i++) {
             let u = ufos[i];
             if (u.x > 640) {
-                nichtErwischt.push(u);
+                nichtErwischt.push(ufos[i]);
             }
             if (u.x < -40) {
-                nichtErwischt.push(u);
+                nichtErwischt.push(ufos[i]);
             }
             if (u.y > 700) {
                 ufos.splice(i);
@@ -86,10 +86,10 @@ var abschlussaufgabe;
             }
             u.move();
             u.draw();
-            if (nichtErwischt.length == 20) {
-                alert("Game Over");
-                location.reload();
-            }
+        }
+        if (nichtErwischt.length > 20) {
+            alert("Game Over");
+            location.reload();
         }
         window.setTimeout(animate, 20);
     }
