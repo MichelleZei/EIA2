@@ -13,17 +13,19 @@ namespace abschlussaufgabe {
     let imgData: ImageData;
     let ufos: Ufos[] = [];
     let nichtErwischt: Ufos[] = [];
-    let n: number = 5;
+    let n: number = 2;
     let h: number = 0;
     let status: boolean = false;
+    let y: number;
+    let x: number;
+    let fillColor: string;
+    let color: string = "#81F7F3";
+    let colorbody: string = "#31B404";
 
     function init(_event: Event): void {
-        let y: number;
-        let x: number;
-        let fillColor: string;
-        let color: string = "#81F7F3";
-        let colorbody: string = "#31B404";
-        //        let status: boolean = false;
+
+        setInterval(addUfoRechts, 1000);
+        setInterval(addUfoLinks, 1000);
         let b: Background = new Background(x, y, fillColor);
         let button: HTMLElement = document.getElementsByTagName("button")[0];
 
@@ -40,11 +42,11 @@ namespace abschlussaufgabe {
 
         // UfosRechts und UfosLinks fünf mal malen
 
-        for (let i: number = 0; i < 5; i++) {
+        for (let i: number = 0; i < n; i++) {
             let rechts: UfosRechts = new UfosRechts(x, y, color, colorbody, status);
             ufos.push(rechts);
         }
-        for (let i: number = 0; i < 5; i++) {
+        for (let i: number = 0; i < n; i++) {
             let links: UfosLinks = new UfosLinks(x, y, color, colorbody, status);
             ufos.push(links);
         }
@@ -76,31 +78,33 @@ namespace abschlussaufgabe {
             // ob es in der Nähe des Klicks war. Wenn ja, 
 
             if (Math.abs(diffx) < 60 && Math.abs(diffy) < 60) {
-                // if-Bedingung, ob das angeklickte Ufo schonmal getroffen wurde, fehlt noch (mit status)
-                // dann soll es nach unten fallen, die Zahl der abgeschossenen Ufos erhöhen und den status auf true (getroffen) ändern.
-                status = true; // getroffen
-                falldown(i, u, status);
-                h++;
-                TrefferZaehlen(h);
+                if (status == false) {
+                    // dann soll es nach unten fallen, die Zahl der abgeschossenen Ufos erhöhen und den status auf true (getroffen) ändern.
+                    ufos[i].status = true; // getroffen
+//                    falldown(i, u, status);
+                    h++;
+                    TrefferZaehlen(h);
+                }
+
             }
         }
     }
 
     // Funktion, die die angeklickten Ufos runterfallen lässt
 
-    function falldown(_i: number, _u: Ufos, _status: boolean): void {
-        crc2.putImageData(imgData, 0, 0);
-        for (let i: number = 0; i < ufos.length; i++) {
-            let u: Ufos = ufos[_i];
-            if (u.y > 700) {
-                ufos.splice(i);
-                console.log(ufos.length);
-            }
-            _u.fall();
-            _u.draw();
-            window.setTimeout(falldown(_i, _u, _status), 20);
-        }
-    }
+//    function falldown(_i: number, _u: Ufos, _status: boolean): void {
+//        crc2.putImageData(imgData, 0, 0);
+//        for (let i: number = 0; i < ufos.length; i++) {
+//            let u: Ufos = ufos[_i];
+//            if (u.y > 700) {
+//                ufos.splice(i);
+//                console.log(ufos.length);
+//            }
+//            _u.fall();
+//            _u.draw();
+//            window.setTimeout(falldown(_i, _u, _status), 20);
+//        }
+//    }
 
     // Funktion, die die Abgeschossenen Ufos mitgezählt werden
 
@@ -135,5 +139,19 @@ namespace abschlussaufgabe {
 
     function reload(): void {
         location.reload();
+    }
+    
+    // Ufos fliegen von allein nach einer bestimmten Zeit rein.
+    
+    function addUfoRechts(): void {
+        let neu: Ufos = new UfosRechts(x, y, color, colorbody, status);
+        ufos.push(neu);
+        n++;
+    }
+
+    function addUfoLinks(): void {
+        let neu: Ufos = new UfosLinks(x, y, color, colorbody, status);
+        ufos.push(neu);
+        n++;
     }
 }
