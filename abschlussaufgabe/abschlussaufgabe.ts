@@ -80,11 +80,11 @@ namespace abschlussaufgabe {
             if (Math.abs(diffx) < 60 && Math.abs(diffy) < 60) {
                 if (status == false) {
                     // dann soll es nach unten fallen, die Zahl der abgeschossenen Ufos erhöhen und den status auf true (getroffen) ändern.
-                    ufos[i].status = true; // getroffen
+                    status = true; // getroffen
                     h++;
                     TrefferZaehlen(h);
+                    console.log(status);
                 }
-
             }
         }
     }
