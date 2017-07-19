@@ -7,7 +7,7 @@ var abschlussaufgabe;
 (function (abschlussaufgabe) {
     class Ufos {
         constructor(_color, _colorbody) {
-            this.speed = 2;
+            this.speed = 1;
             this.color = _color;
             this.colorbody = _colorbody;
         }

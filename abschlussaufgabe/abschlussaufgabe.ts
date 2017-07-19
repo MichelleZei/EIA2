@@ -59,12 +59,12 @@ namespace abschlussaufgabe {
             let h: number = 0;
             let u: Ufos = ufos[i];
             let diffx: number = ufos[i].x - _event.clientX;
-            let diffy: number = ufos[i].x - _event.clientY;
+            let diffy: number = ufos[i].y - _event.clientY;
             // ob es in der Nähe des Klicks war. Wenn ja, 
             if (Math.abs(diffx) < 60 && Math.abs(diffy) < 60) {
                 // dann soll es nach unten fallen und die Zahl der abgeschossenen Ufos erhöhen.
-                u.fall();
-                nachUntenFallen(i, u);
+//                u.fall();
+                falldown(i, u);
                 h++;
                 hochzaehlen(h);
                 console.log(h);
@@ -72,14 +72,19 @@ namespace abschlussaufgabe {
         } 
     }
 
-    function nachUntenFallen(_i: number, _u: Ufos): void {
-        _u.y += 10; //_u.fall();
-        window.setTimeout(nachUntenFallen, 20);
+    function falldown(_i: number, _u: Ufos): void {
+        crc2.putImageData(imgData, 0, 0);
+        for (let i: number = 0; i < n; i++) {
+            _u.fall();
+            _u.draw();
+        }
+//        _u.y += 10; //_u.fall();
+        window.setTimeout(falldown, 20);
     }
 
     function hochzaehlen(_h: number): void {
         let hochzaehlen: HTMLElement = document.getElementById("hochzaehlen");
-        hochzaehlen.innerText = "Deine Abgeschossenen Ufos: " + _h.toString();
+        hochzaehlen.innerText = "Abgeschossenen Ufos: " + _h.toString();
     }
 
     function animate(): void {

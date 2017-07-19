@@ -45,25 +45,30 @@ var abschlussaufgabe;
             let h = 0;
             let u = ufos[i];
             let diffx = ufos[i].x - _event.clientX;
-            let diffy = ufos[i].x - _event.clientY;
+            let diffy = ufos[i].y - _event.clientY;
             // ob es in der N�he des Klicks war. Wenn ja, 
             if (Math.abs(diffx) < 60 && Math.abs(diffy) < 60) {
                 // dann soll es nach unten fallen und die Zahl der abgeschossenen Ufos erh�hen.
-                u.fall();
-                nachUntenFallen(i, u);
+                //                u.fall();
+                falldown(i, u);
                 h++;
                 hochzaehlen(h);
                 console.log(h);
             }
         }
     }
-    function nachUntenFallen(_i, _u) {
-        _u.y += 10; //_u.fall();
-        window.setTimeout(nachUntenFallen, 20);
+    function falldown(_i, _u) {
+        abschlussaufgabe.crc2.putImageData(imgData, 0, 0);
+        for (let i = 0; i < n; i++) {
+            _u.fall();
+            _u.draw();
+        }
+        //        _u.y += 10; //_u.fall();
+        window.setTimeout(falldown, 20);
     }
     function hochzaehlen(_h) {
         let hochzaehlen = document.getElementById("hochzaehlen");
-        hochzaehlen.innerText = "Deine Abgeschossenen Ufos: " + _h.toString();
+        hochzaehlen.innerText = "Abgeschossenen Ufos: " + _h.toString();
     }
     function animate() {
         abschlussaufgabe.crc2.putImageData(imgData, 0, 0);

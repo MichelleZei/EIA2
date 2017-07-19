@@ -14,7 +14,7 @@ namespace abschlussaufgabe {
         speed: number;
         
         constructor(_color: string, _colorbody: string) {
-            this.speed = 2;
+            this.speed = 1;
             this.color = _color;
             this.colorbody = _colorbody;
         }
