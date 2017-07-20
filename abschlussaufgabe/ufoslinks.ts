@@ -11,30 +11,29 @@ namespace abschlussaufgabe {
         y: number;
         color: string;
         colorbody: string;
+        colorAlien: string;
 
-        constructor(_x: number, _y: number, _color: string, _colorbody: string, _status: boolean) {
-            super(_color, _colorbody);
+        constructor(_x: number, _y: number, _color: string, _colorbody: string, _colorAlien: string, _status: boolean) {
+            super(_color, _colorbody, _colorAlien);
             this.colorbody = _colorbody;
-            this.x = 1;
+            this.x = 0;
             this.y = Math.random() * 500;
         }
 
         move(): void {
-            this.x += 2 * this.speed;
+            if (this.status == false) {
+                this.x += 2 * this.speed;
+            }
+            else {
+                this.fall();
+            }
         }
 
         fall(): void {
-            this.y += 1;
+            this.y += 15;
         }
 
         draw(): void {
-            //Körper
-            crc2.beginPath();
-            crc2.fillStyle = this.colorbody;
-            crc2.arc(this.x, this.y, 60, 0, Math.PI);
-            crc2.closePath();
-            crc2.stroke();
-            crc2.fill();
             //Glasgehäuse 
             crc2.beginPath();
             crc2.strokeStyle = this.color;
@@ -61,6 +60,75 @@ namespace abschlussaufgabe {
             crc2.closePath();
             crc2.stroke();
             crc2.fill();
+            //Alien Kopf
+            crc2.beginPath();
+            crc2.strokeStyle = this.colorAlien;
+            crc2.fillStyle = this.colorAlien;
+            crc2.arc(this.x, this.y - 10, 15, 1 * Math.PI, 0);
+            crc2.closePath();
+            crc2.stroke();
+            crc2.fill();
+            //Alien Körper
+            crc2.beginPath();
+            crc2.fillStyle = this.colorAlien;
+            crc2.fillRect(this.x - 15, this.y - 10, 30, 30);
+            crc2.closePath();
+            //Ufo Körper
+            crc2.beginPath();
+            crc2.strokeStyle = this.colorbody;
+            crc2.fillStyle = this.colorbody;
+            crc2.arc(this.x, this.y, 60, 0, Math.PI);
+            crc2.closePath();
+            crc2.stroke();
+            crc2.fill();
+            if (this.status == false) {
+                //Alien Augen nicht abgeschossen
+                crc2.beginPath();
+                crc2.strokeStyle = "black";
+                crc2.fillStyle = "black";
+                crc2.arc(this.x - 3, this.y - 15, 2, 2 * Math.PI, 0);
+                crc2.closePath();
+                crc2.stroke();
+                crc2.fill();
+                crc2.beginPath();
+                crc2.strokeStyle = "black";
+                crc2.fillStyle = "black";
+                crc2.arc(this.x + 3, this.y - 15, 2, 2 * Math.PI, 0);
+                crc2.closePath();
+                crc2.stroke();
+                crc2.fill();
+            }
+            else {
+                //Alien Augen abgeschossen
+                crc2.beginPath();
+                crc2.strokeStyle = "black";
+                crc2.fillStyle = "black";
+                crc2.rect(this.x - 10, this.y - 10, 8, 2);
+                crc2.closePath();
+                crc2.stroke();
+                crc2.fill();
+                crc2.beginPath();
+                crc2.strokeStyle = "black";
+                crc2.fillStyle = "black";
+                crc2.rect(this.x - 7, this.y - 13, 2, 8);
+                crc2.closePath();
+                crc2.stroke();
+                crc2.fill();
+                crc2.beginPath();
+                crc2.strokeStyle = "black";
+                crc2.fillStyle = "black";
+                crc2.rect(this.x + 4, this.y - 10, 8, 2);
+                crc2.closePath();
+                crc2.stroke();
+                crc2.fill();
+                crc2.beginPath();
+                crc2.strokeStyle = "black";
+                crc2.fillStyle = "black";
+                crc2.rect(this.x + 7, this.y - 13, 2, 8);
+                crc2.closePath();
+                crc2.stroke();
+                crc2.fill();
+            }
         }
     }
 }

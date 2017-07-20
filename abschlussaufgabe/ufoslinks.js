@@ -6,26 +6,24 @@
 var abschlussaufgabe;
 (function (abschlussaufgabe) {
     class UfosLinks extends abschlussaufgabe.Ufos {
-        constructor(_x, _y, _color, _colorbody, _status) {
-            super(_color, _colorbody);
+        constructor(_x, _y, _color, _colorbody, _colorAlien, _status) {
+            super(_color, _colorbody, _colorAlien);
             this.colorbody = _colorbody;
-            this.x = 1;
+            this.x = 0;
             this.y = Math.random() * 500;
         }
         move() {
-            this.x += 2 * this.speed;
+            if (this.status == false) {
+                this.x += 2 * this.speed;
+            }
+            else {
+                this.fall();
+            }
         }
         fall() {
-            this.y += 1;
+            this.y += 15;
         }
         draw() {
-            //K�rper
-            abschlussaufgabe.crc2.beginPath();
-            abschlussaufgabe.crc2.fillStyle = this.colorbody;
-            abschlussaufgabe.crc2.arc(this.x, this.y, 60, 0, Math.PI);
-            abschlussaufgabe.crc2.closePath();
-            abschlussaufgabe.crc2.stroke();
-            abschlussaufgabe.crc2.fill();
             //Glasgeh�use 
             abschlussaufgabe.crc2.beginPath();
             abschlussaufgabe.crc2.strokeStyle = this.color;
@@ -52,6 +50,75 @@ var abschlussaufgabe;
             abschlussaufgabe.crc2.closePath();
             abschlussaufgabe.crc2.stroke();
             abschlussaufgabe.crc2.fill();
+            //Alien Kopf
+            abschlussaufgabe.crc2.beginPath();
+            abschlussaufgabe.crc2.strokeStyle = this.colorAlien;
+            abschlussaufgabe.crc2.fillStyle = this.colorAlien;
+            abschlussaufgabe.crc2.arc(this.x, this.y - 10, 15, 1 * Math.PI, 0);
+            abschlussaufgabe.crc2.closePath();
+            abschlussaufgabe.crc2.stroke();
+            abschlussaufgabe.crc2.fill();
+            //Alien K�rper
+            abschlussaufgabe.crc2.beginPath();
+            abschlussaufgabe.crc2.fillStyle = this.colorAlien;
+            abschlussaufgabe.crc2.fillRect(this.x - 15, this.y - 10, 30, 30);
+            abschlussaufgabe.crc2.closePath();
+            //Ufo K�rper
+            abschlussaufgabe.crc2.beginPath();
+            abschlussaufgabe.crc2.strokeStyle = this.colorbody;
+            abschlussaufgabe.crc2.fillStyle = this.colorbody;
+            abschlussaufgabe.crc2.arc(this.x, this.y, 60, 0, Math.PI);
+            abschlussaufgabe.crc2.closePath();
+            abschlussaufgabe.crc2.stroke();
+            abschlussaufgabe.crc2.fill();
+            if (this.status == false) {
+                //Alien Augen nicht abgeschossen
+                abschlussaufgabe.crc2.beginPath();
+                abschlussaufgabe.crc2.strokeStyle = "black";
+                abschlussaufgabe.crc2.fillStyle = "black";
+                abschlussaufgabe.crc2.arc(this.x - 3, this.y - 15, 2, 2 * Math.PI, 0);
+                abschlussaufgabe.crc2.closePath();
+                abschlussaufgabe.crc2.stroke();
+                abschlussaufgabe.crc2.fill();
+                abschlussaufgabe.crc2.beginPath();
+                abschlussaufgabe.crc2.strokeStyle = "black";
+                abschlussaufgabe.crc2.fillStyle = "black";
+                abschlussaufgabe.crc2.arc(this.x + 3, this.y - 15, 2, 2 * Math.PI, 0);
+                abschlussaufgabe.crc2.closePath();
+                abschlussaufgabe.crc2.stroke();
+                abschlussaufgabe.crc2.fill();
+            }
+            else {
+                //Alien Augen abgeschossen
+                abschlussaufgabe.crc2.beginPath();
+                abschlussaufgabe.crc2.strokeStyle = "black";
+                abschlussaufgabe.crc2.fillStyle = "black";
+                abschlussaufgabe.crc2.rect(this.x - 10, this.y - 10, 8, 2);
+                abschlussaufgabe.crc2.closePath();
+                abschlussaufgabe.crc2.stroke();
+                abschlussaufgabe.crc2.fill();
+                abschlussaufgabe.crc2.beginPath();
+                abschlussaufgabe.crc2.strokeStyle = "black";
+                abschlussaufgabe.crc2.fillStyle = "black";
+                abschlussaufgabe.crc2.rect(this.x - 7, this.y - 13, 2, 8);
+                abschlussaufgabe.crc2.closePath();
+                abschlussaufgabe.crc2.stroke();
+                abschlussaufgabe.crc2.fill();
+                abschlussaufgabe.crc2.beginPath();
+                abschlussaufgabe.crc2.strokeStyle = "black";
+                abschlussaufgabe.crc2.fillStyle = "black";
+                abschlussaufgabe.crc2.rect(this.x + 4, this.y - 10, 8, 2);
+                abschlussaufgabe.crc2.closePath();
+                abschlussaufgabe.crc2.stroke();
+                abschlussaufgabe.crc2.fill();
+                abschlussaufgabe.crc2.beginPath();
+                abschlussaufgabe.crc2.strokeStyle = "black";
+                abschlussaufgabe.crc2.fillStyle = "black";
+                abschlussaufgabe.crc2.rect(this.x + 7, this.y - 13, 2, 8);
+                abschlussaufgabe.crc2.closePath();
+                abschlussaufgabe.crc2.stroke();
+                abschlussaufgabe.crc2.fill();
+            }
         }
     }
     abschlussaufgabe.UfosLinks = UfosLinks;

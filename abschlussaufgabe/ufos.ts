@@ -11,14 +11,20 @@ namespace abschlussaufgabe {
         y: number;
         color: string;
         colorbody: string;
+        colorAlien: string;
         status: boolean = false; //nicht getroffen
         speed: number;
         
-        constructor(_color: string, _colorbody: string) {
+        constructor(_color: string, _colorbody: string, _colorAlien: string) {
             this.speed = 1;
             this.color = _color;
             this.colorbody = _colorbody;
+            this.colorAlien = _colorAlien;
             this.status = false;
+        }
+        update(): void {
+            this.move();
+            this.draw();
         }
         
         fall(): void {

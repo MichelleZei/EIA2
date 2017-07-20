@@ -6,12 +6,17 @@
 var abschlussaufgabe;
 (function (abschlussaufgabe) {
     class Ufos {
-        constructor(_color, _colorbody) {
+        constructor(_color, _colorbody, _colorAlien) {
             this.status = false; //nicht getroffen
             this.speed = 1;
             this.color = _color;
             this.colorbody = _colorbody;
+            this.colorAlien = _colorAlien;
             this.status = false;
+        }
+        update() {
+            this.move();
+            this.draw();
         }
         fall() {
             //nix
