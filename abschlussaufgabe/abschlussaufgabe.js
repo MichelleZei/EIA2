@@ -61,14 +61,14 @@ var abschlussaufgabe;
         abschlussaufgabe.canvas.removeEventListener("click", init);
         abschlussaufgabe.canvas.removeEventListener("touch", init);
         // UfosRechts und UfosLinks f�nf mal malen
-        for (let i = 0; i < n; i++) {
-            let rechts = new abschlussaufgabe.UfosRechts(x, y, color, colorbody, colorAlien, status);
-            abschlussaufgabe.ufos.push(rechts);
-        }
-        for (let i = 0; i < n; i++) {
-            let links = new abschlussaufgabe.UfosLinks(x, y, color, colorbody, colorAlien, status);
-            abschlussaufgabe.ufos.push(links);
-        }
+        //        for (let i: number = 0; i < n; i++) {
+        //            let rechts: UfosRechts = new UfosRechts(x, y, color, colorbody, colorAlien, status);
+        //            ufos.push(rechts);
+        //        }
+        //        for (let i: number = 0; i < n; i++) {
+        //            let links: UfosLinks = new UfosLinks(x, y, color, colorbody, colorAlien, status);
+        //            ufos.push(links);
+        //        }
         // Cursor style ge�ndert
         document.getElementById("canvas").style.cursor = "crosshair";
         // Konsolenausgabe

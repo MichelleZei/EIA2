@@ -92,14 +92,14 @@ namespace abschlussaufgabe {
 
         // UfosRechts und UfosLinks fünf mal malen
 
-        for (let i: number = 0; i < n; i++) {
-            let rechts: UfosRechts = new UfosRechts(x, y, color, colorbody, colorAlien, status);
-            ufos.push(rechts);
-        }
-        for (let i: number = 0; i < n; i++) {
-            let links: UfosLinks = new UfosLinks(x, y, color, colorbody, colorAlien, status);
-            ufos.push(links);
-        }
+//        for (let i: number = 0; i < n; i++) {
+//            let rechts: UfosRechts = new UfosRechts(x, y, color, colorbody, colorAlien, status);
+//            ufos.push(rechts);
+//        }
+//        for (let i: number = 0; i < n; i++) {
+//            let links: UfosLinks = new UfosLinks(x, y, color, colorbody, colorAlien, status);
+//            ufos.push(links);
+//        }
         
         // Cursor style geändert
         
