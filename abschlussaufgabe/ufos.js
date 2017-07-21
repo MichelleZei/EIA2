@@ -8,7 +8,7 @@ var abschlussaufgabe;
     class Ufos {
         constructor(_color, _colorbody, _colorAlien) {
             this.status = false; //nicht getroffen
-            this.speed = 1;
+            this.speed = 1.5;
             this.color = _color;
             this.colorbody = _colorbody;
             this.colorAlien = _colorAlien;

@@ -17,7 +17,7 @@ namespace abschlussaufgabe {
         h: number;
         
         constructor(_color: string, _colorbody: string, _colorAlien: string) {
-            this.speed = 1;
+            this.speed = 1.5;
             this.color = _color;
             this.colorbody = _colorbody;
             this.colorAlien = _colorAlien;
