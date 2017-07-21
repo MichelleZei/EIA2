@@ -28,8 +28,8 @@ var abschlussaufgabe;
     let imgData;
     abschlussaufgabe.ufos = []; // Array f�r alle Ufos
     let nichtErwischt = []; // Array f�r die Ufos, die nicht getroffen wurden und aus dem Canvas herausgeflogen sind
-    let n = 2; // Anzahl der Ufos zum Anfang
-    let h = 0; // wird zum hochz�hlen der Treffer verwendet
+    let n = 0; // Anzahl der Ufos zum Anfang
+    abschlussaufgabe.h = 0; // wird zum hochz�hlen der Treffer verwendet
     let status = false; // Status der Ufos (getroffen [true] oder nicht getroffen [false])
     let y; // y-Position
     let x; // x-Position
@@ -60,15 +60,6 @@ var abschlussaufgabe;
         //Entfernt Klick und Touch Event auf Canvas, das die init Funktion aufruft.
         abschlussaufgabe.canvas.removeEventListener("click", init);
         abschlussaufgabe.canvas.removeEventListener("touch", init);
-        // UfosRechts und UfosLinks f�nf mal malen
-        //        for (let i: number = 0; i < n; i++) {
-        //            let rechts: UfosRechts = new UfosRechts(x, y, color, colorbody, colorAlien, status);
-        //            ufos.push(rechts);
-        //        }
-        //        for (let i: number = 0; i < n; i++) {
-        //            let links: UfosLinks = new UfosLinks(x, y, color, colorbody, colorAlien, status);
-        //            ufos.push(links);
-        //        }
         // Cursor style ge�ndert
         document.getElementById("canvas").style.cursor = "crosshair";
         // Konsolenausgabe
@@ -94,9 +85,13 @@ var abschlussaufgabe;
                     // der Status wird auf true (getroffen) ge�ndert, sodass in der move() Funktion die Funktion fall() aufgerufen wird und das Ufo noch unten f�llt.
                     u.status = true;
                     // Zahl der abgeschossenen Ufos erh�hen
-                    h++;
+                    abschlussaufgabe.h++;
+                    if (abschlussaufgabe.h == 200) {
+                        alert("Du hast gewonnen!");
+                        location.reload();
+                    }
                     // Funktionsaufruf
-                    TrefferZaehlen(h);
+                    TrefferZaehlen(abschlussaufgabe.h);
                 }
             }
         }
@@ -119,7 +114,7 @@ var abschlussaufgabe;
             }
             if (u.y == 700) {
                 abschlussaufgabe.ufos.splice(i);
-                console.log(abschlussaufgabe.ufos.length);
+                console.log("Ufos: " + abschlussaufgabe.ufos.length);
             }
             u.update();
         }
@@ -130,7 +125,7 @@ var abschlussaufgabe;
             location.reload();
         }
         // Konsolenausgabe
-        console.log(nichtErwischt.length);
+        console.log("nichtErwischt :" + nichtErwischt.length);
     }
     // Funktion daf�r, dass wenn man auf den Button "Starte neu" dr�ckt, man nochmal von neu anfangen kann(Seite l�dt nochmal neu)
     function reload() {

@@ -20,12 +20,12 @@ namespace abschlussaufgabe {
         }
 
         move(): void {
-            if (this.status == false) {
-                this.x -= 5 * this.speed;
-            }
-            else {
-                this.fall();
-            }
+                if (this.status == false) {
+                    this.x -= 5 * this.speed;
+                }
+                else {
+                    this.fall();
+                }
         }
 
         fall(): void {

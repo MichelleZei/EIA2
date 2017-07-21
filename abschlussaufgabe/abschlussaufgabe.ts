@@ -8,14 +8,14 @@
 namespace abschlussaufgabe {
 
     window.addEventListener("load", start);
-    
+
     // Startbildschirm mit kurzer Erklärung zum Spiel
 
     function start(_event: Event): void {
         let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
         canvas.width = 600;
         canvas.height = 600;
-        
+
         // EventListener, um das Spiel zu beginnen
 
         canvas.addEventListener("click", init);
@@ -34,16 +34,16 @@ namespace abschlussaufgabe {
         crc2.closePath();
         crc2.fill();
     }
-    
+
     // Deklaration von Variablen
-    
+
     export let crc2: CanvasRenderingContext2D;
     export let canvas: HTMLCanvasElement;
     let imgData: ImageData;
     export let ufos: Ufos[] = []; // Array für alle Ufos
     let nichtErwischt: Ufos[] = []; // Array für die Ufos, die nicht getroffen wurden und aus dem Canvas herausgeflogen sind
-    let n: number = 2; // Anzahl der Ufos zum Anfang
-    let h: number = 0; // wird zum hochzählen der Treffer verwendet
+    let n: number = 0; // Anzahl der Ufos zum Anfang
+    export let h: number = 0; // wird zum hochzählen der Treffer verwendet
     let status: boolean = false; // Status der Ufos (getroffen [true] oder nicht getroffen [false])
     let y: number; // y-Position
     let x: number; // x-Position
@@ -51,25 +51,25 @@ namespace abschlussaufgabe {
     let color: string = "#81F7F3"; // Farbe für das Glasgehäuse
     let colorbody: string = "#31B404"; // Farbe des Ufos
     let colorAlien: string = "#FF4000"; // Farbe des Aliens
-    
+
     // Spielbeginn, nachdem man auf den Startbildschirm geklickt hat
 
     function init(_event: MouseEvent): void {
-        
+
         // Interval dafür, dass automatisch neue Ufos hinzugefügt werden
-        
+
         setInterval(addUfoRechts, 1200);
         setInterval(addUfoLinks, 1800);
-        
+
         // Deklaration von Variablen
-        
+
         let b: Background = new Background(x, y, fillColor);
         let button: HTMLElement = document.getElementsByTagName("button")[0];
         let alieninvasion: HTMLElement = document.getElementsByTagName("h1")[0];
         let starttext: HTMLElement = document.getElementById("start");
-        
+
         // Style (was nach Spielbeginn noch angezeigt werden soll)
-        
+
         alieninvasion.style.display = "none";
         starttext.style.display = "none";
         button.style.display = "inline";
@@ -84,27 +84,16 @@ namespace abschlussaufgabe {
         //Bild speichern
 
         imgData = crc2.getImageData(0, 0, 600, 600);
-        
+
         //Entfernt Klick und Touch Event auf Canvas, das die init Funktion aufruft.
-        
+
         canvas.removeEventListener("click", init);
         canvas.removeEventListener("touch", init);
 
-        // UfosRechts und UfosLinks fünf mal malen
-
-//        for (let i: number = 0; i < n; i++) {
-//            let rechts: UfosRechts = new UfosRechts(x, y, color, colorbody, colorAlien, status);
-//            ufos.push(rechts);
-//        }
-//        for (let i: number = 0; i < n; i++) {
-//            let links: UfosLinks = new UfosLinks(x, y, color, colorbody, colorAlien, status);
-//            ufos.push(links);
-//        }
-        
         // Cursor style geändert
-        
+
         document.getElementById("canvas").style.cursor = "crosshair";
-        
+
         // Konsolenausgabe
 
         console.log(ufos);
@@ -140,6 +129,10 @@ namespace abschlussaufgabe {
                     u.status = true;
                     // Zahl der abgeschossenen Ufos erhöhen
                     h++;
+                    if (h == 200) {
+                        alert("Du hast gewonnen!");
+                        location.reload();
+                    }
                     // Funktionsaufruf
                     TrefferZaehlen(h);
                 }
@@ -168,22 +161,22 @@ namespace abschlussaufgabe {
             }
             if (u.y == 700) {
                 ufos.splice(i);
-                console.log(ufos.length);
+                console.log("Ufos: " + ufos.length);
             }
             u.update();
         }
         window.setTimeout(animate, 20);
-        
+
         // Bedingung, dass wenn mehr als 10 Ufos nicht erwischt wurden, man Game over ist.
-        
+
         if (nichtErwischt.length > 10) {
             alert("Game Over");
             location.reload();
         }
-        
+
         // Konsolenausgabe
-        
-        console.log(nichtErwischt.length);
+
+        console.log("nichtErwischt :" + nichtErwischt.length);
     }
 
     // Funktion dafür, dass wenn man auf den Button "Starte neu" drückt, man nochmal von neu anfangen kann(Seite lädt nochmal neu)

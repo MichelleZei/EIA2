@@ -14,6 +14,7 @@ namespace abschlussaufgabe {
         colorAlien: string;
         status: boolean = false; //nicht getroffen
         speed: number;
+        h: number;
         
         constructor(_color: string, _colorbody: string, _colorAlien: string) {
             this.speed = 1;

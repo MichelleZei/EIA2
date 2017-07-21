@@ -27,8 +27,9 @@ namespace abschlussaufgabe {
             else {
                 this.fall();
             }
-        }
 
+        }
+        
         fall(): void {
             this.y += 15;
         }
