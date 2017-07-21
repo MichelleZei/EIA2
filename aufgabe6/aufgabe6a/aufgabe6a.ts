@@ -5,7 +5,7 @@
     
 //Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
 namespace L6_Interface {
-    interface Square {
+    interface Bienen {
         x: number;
         y: number;
         color: string;
@@ -15,7 +15,7 @@ namespace L6_Interface {
     
     window.addEventListener("load", init);
     let crc2: CanvasRenderingContext2D;
-    let squares: Square[] = [];
+    let bienen: Bienen[] = [];
     let n: number = 10;
     let imgData: ImageData;
 
@@ -65,13 +65,13 @@ namespace L6_Interface {
         // Koordinaten der Öffnung des Bienenkorbs
 
         for (let i: number = 0; i < n; i++) {
-            let s: Square = { x: 0, y: 0, color: " ", colorFluegel: " ", richtung: 0 };
+            let s: Bienen = { x: 0, y: 0, color: " ", colorFluegel: " ", richtung: 0 };
             s.x = 25;
             s.y = 210;
             s.color = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
             s.colorFluegel = "#B9FFFF";
             s.richtung = (Math.random() * 2);
-            squares[i] = s;
+            bienen[i] = s;
         }
 
         window.setTimeout(animate, 20);
@@ -396,7 +396,7 @@ namespace L6_Interface {
     function animate(): void {
         crc2.putImageData(imgData, 0, 0);
         for (let i: number = 0; i < n; i++) {
-            let s: Square = squares[i];
+            let s: Bienen = bienen[i];
             s.x += Math.random() * 3 - 2 + s.richtung;
             s.y += Math.random() * 6 - 3;
             if (s.x < 0) {
@@ -418,11 +418,11 @@ namespace L6_Interface {
 
     // hinzufügen der Bienen 
     function fuegeEineBieneDazu(): void {
-        squares.push({x: 20, y: 210, color: "#FFEF00", colorFluegel: "#F2F2F2", richtung: ((Math.random() * 4) + 0)});
-        squares.push({x: 20, y: 210, color: "#FFEF00", colorFluegel: "#F2F2F2", richtung: ((Math.random() * 4) + 0)});
+        bienen.push({x: 20, y: 210, color: "#FFEF00", colorFluegel: "#F2F2F2", richtung: ((Math.random() * 4) + 0)});
+        bienen.push({x: 20, y: 210, color: "#FFEF00", colorFluegel: "#F2F2F2", richtung: ((Math.random() * 4) + 0)});
         n++;
     }
-    console.log(squares);
+    console.log(bienen);
 }
 
 

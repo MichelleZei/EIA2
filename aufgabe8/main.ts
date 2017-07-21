@@ -4,6 +4,7 @@
 //Datum: 18.5.2017
 
 //Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
+
 namespace L8_Inheritance {
 
     window.addEventListener("load", init);

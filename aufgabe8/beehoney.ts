@@ -32,9 +32,9 @@ namespace L8_Inheritance {
                 this.x += xDiff * this.speed;
                 this.y += yDiff * this.speed;
             }
-            if (this.x == this.xTarget && this.y == this.yTarget) {
-                this.setTargetFlower();    
-            }
+//            if (this.x == this.xTarget && this.y == this.yTarget) {
+//                this.setTargetFlower();    
+//            }
         }
 
         draw(): void {

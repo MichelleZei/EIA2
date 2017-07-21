@@ -66,7 +66,7 @@ var A3a;
         }
         //Beginn Aufgabe 3a
         Markierung();
-        let selected;
+        //        let selected: HTMLDivElement;
         function Markierung() {
             let anzahlKoerner = 0;
             let divs = document.getElementsByTagName("div");

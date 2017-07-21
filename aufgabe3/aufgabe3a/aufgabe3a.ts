@@ -72,7 +72,7 @@ namespace A3a {
 
         Markierung();
 
-        let selected: HTMLDivElement;
+//        let selected: HTMLDivElement;
 
         function Markierung(): void {
             let anzahlKoerner: number = 0;
